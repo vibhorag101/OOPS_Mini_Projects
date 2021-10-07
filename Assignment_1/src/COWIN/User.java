@@ -8,6 +8,8 @@ class User {
     private String recievedVaccineName;
     private int doseReceived;
     private String vaccineStatus;
+    private int nextDate;
+    private vaccine vaccineTypeRecieved;
 
 
     User(String name, String ID, int age) {
@@ -37,12 +39,20 @@ class User {
         doseReceived++;
     }
 
+    public void setRecievedVaccineName(String s) {
+        recievedVaccineName = s;
+    }
+
     public int getDoseReceived() {
         return doseReceived;
     }
 
-    public void setVaccinationStatus(vaccine v) {
-        if (doseReceived == v.getDoseRequired()) {
+    public void setNextDate(int slotNumber, int gap) {
+        nextDate = slotNumber + gap;
+    }
+
+    public void setVaccinationStatus() {
+        if (doseReceived == vaccineTypeRecieved.getDoseRequired()) {
             vaccineStatus = "Fully Vaccinated";
         } else if (doseReceived > 0) {
             vaccineStatus = "Partially Vaccinated";
@@ -55,6 +65,10 @@ class User {
         System.out.println("Your registered 12 Digit ID is " + uniqueID_User);
         System.out.println("Your registered age is " + age);
         System.out.println("Your are " + registerStatus);
+    }
+
+    void setVaccineTypeReceived(vaccine v) {
+        this.vaccineTypeRecieved = v;
     }
 
 

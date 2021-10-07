@@ -12,7 +12,7 @@ class Slot {
 
     class Day {
         private final int dayNumber;
-        private final int quantity;
+        private int quantity;
         private final vaccine vaccineType;
 
         Day(int dayNumber, int quantity, vaccine vaccineType) {
@@ -20,6 +20,7 @@ class Slot {
             this.quantity = quantity;
             this.vaccineType = vaccineType;
         }
+
 
         public int getDayNumber() {
             return dayNumber;
@@ -34,10 +35,13 @@ class Slot {
         }
 
         void displayDayDetails() {
-            System.out.println("Hospital ID is " + HospitalID);
+//            System.out.println("Hospital ID is " + HospitalID);
             System.out.println("Day Number is " + dayNumber);
-            System.out.println("Quantity Booked for " + dayNumber + " is" + quantity);
+            System.out.println("Quantity for " + dayNumber + " is" + quantity);
             System.out.println("The vaccine is " + vaccineType.getVaccineName());
+        }
+        void bookedSlot(){
+            quantity--;
         }
 
     }
@@ -60,7 +64,7 @@ class Slot {
 
     void displaySlotDetails() {
         System.out.println("The hospital id is " + HospitalID);
-        System.out.println("The number of slots booked are " + SlotNumber);
+        System.out.println("The number of slots are " + SlotNumber);
         for (Day d : dayList) {
             d.displayDayDetails();
         }
@@ -73,6 +77,9 @@ class Slot {
         System.out.println("The Hospital Name is " + HospitalName);
     }
 
+    public String getHospitalID(){
+        return HospitalID;
+    }
     ArrayList<Day> getDayList() {
         return dayList;
     }

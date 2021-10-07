@@ -47,7 +47,7 @@ class HandlerClass {
         }
     }
 
-    void bookVaccineSlot() {
+    void bookVaccineSlot(User u) {
         String userID = scn.next();
         System.out.println("Enter 0 for search by Pincode");
         System.out.println("Enter 1 for search by Hospital");
@@ -65,6 +65,25 @@ class HandlerClass {
             if (notfoundFlag) {
                 System.out.println("No Hospital having slots in current pincode exists");
             }
+            System.out.println("Enter the ID of the Hospital");
+            String hospitalID = scn.next();
+            for (Slot s : slotList) {
+                if (s.getHospitalID().equals(hospitalID)) {
+                    s.displaySlotDetails();
+                    System.out.println("Choose your Slot");
+                    int vaccineSlotChosen = scn.nextInt();
+                    vaccine chosenVaccine = s.getDayList().get(vaccineSlotChosen).getVaccineType();
+                    String chosenVaccineName = chosenVaccine.getVaccineName();
+                    u.setRecievedVaccineName(chosenVaccineName);
+                    u.setDoseRecieved();
+                    s.getDayList().get(vaccineSlotChosen).bookedSlot();
+                    System.out.println(u.getUserName() + " vaccinated with " + chosenVaccineName);
+                    u.setNextDate(vaccineSlotChosen, chosenVaccine.getGapRequired());
+                    u.setVaccineTypeReceived(chosenVaccine);
+                }
+            }
+
+
         } else {
             String vaccineName = scn.next();
             for (Slot s : slotList) {
