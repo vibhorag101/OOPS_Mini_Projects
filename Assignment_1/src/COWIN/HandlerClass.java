@@ -1,18 +1,22 @@
 package COWIN;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class HandlerClass {
+    Scanner scn = new Scanner(System.in);
     private int HospitalCounter;
     //BUG Possible
     private final ArrayList<User> userList;
     private final ArrayList<Hospital> hospitalList;
     private final ArrayList<vaccine> vaccineList;
+    private final ArrayList<Slot> slotList;
 
     HandlerClass() {
         userList = new ArrayList<>();
         hospitalList = new ArrayList<>();
         vaccineList = new ArrayList<>();
+        slotList = new ArrayList<>();
     }
 
     void addUser(String userName, int Age, String UserID) {
@@ -29,6 +33,13 @@ class HandlerClass {
         vaccineList.add(temp);
     }
 
+    void addSlot(String HospitalID, int SlotNumber, String HospitalName) {
+        //todo do something related to eliminated HospitalName
+        Slot temp = new Slot(HospitalID, SlotNumber, HospitalName);
+        slotList.add(temp);
+
+    }
+
     void displayVaccineList() {
         int i = 0;
         while (i < vaccineList.size()) {
@@ -36,6 +47,41 @@ class HandlerClass {
         }
     }
 
+    void bookVaccineSlot() {
+        String userID = scn.next();
+        System.out.println("Enter 0 for search by Pincode");
+        System.out.println("Enter 1 for search by Hospital");
+        System.out.println("Enter 2 to exit");
+        int choice = scn.nextInt();
+        if (choice == 0) {
+            int Pincode = scn.nextInt();
+            boolean notfoundFlag = true;
+            for (Hospital h : hospitalList) {
+                if (h.getPincode() == Pincode) {
+                    System.out.println(h.getHospitalName() + " " + h.getHospitalUnique_ID());
+                    notfoundFlag = false;
+                }
+            }
+            if (notfoundFlag) {
+                System.out.println("No Hospital having slots in current pincode exists");
+            }
+        } else {
+            String vaccineName = scn.next();
+            for (Slot s : slotList) {
+                for (Slot.Day d : s.getDayList()) {
+                    //fixme there might be a bug here.
+                    if (d.getVaccineType().getVaccineName().equals(vaccineName)) {
+                        s.displayHospitalNameID();
+                    }
+                }
+            }
+
+
+        }
+        //searching part done , now need to do the booking part
+
+
+    }
 
     ArrayList<User> getUserList() {
         return (userList);

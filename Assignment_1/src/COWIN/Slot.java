@@ -7,6 +7,7 @@ class Slot {
     Scanner scn = new Scanner(System.in);
     private final String HospitalID;
     private final int SlotNumber;
+    private final String HospitalName;
     private HandlerClass h;
 
     class Day {
@@ -33,6 +34,7 @@ class Slot {
         }
 
         void displayDayDetails() {
+            System.out.println("Hospital ID is " + HospitalID);
             System.out.println("Day Number is " + dayNumber);
             System.out.println("Quantity Booked for " + dayNumber + " is" + quantity);
             System.out.println("The vaccine is " + vaccineType.getVaccineName());
@@ -40,12 +42,13 @@ class Slot {
 
     }
 
-    private ArrayList<Day> dayList = new ArrayList<>();
+    private final ArrayList<Day> dayList = new ArrayList<>();
 
-    Slot(String HospitalID, int SlotNumber) {
-        this.SlotNumber = SlotNumber;
+    Slot(String HospitalID, int numberOfSlots, String HospitalName) {
+        this.SlotNumber = numberOfSlots;
         this.HospitalID = HospitalID;
-        for (int i = 0; i < SlotNumber; i++) {
+        this.HospitalName = HospitalName;
+        for (int i = 0; i < numberOfSlots; i++) {
             System.out.println("Enter the quantity for day " + i);
             int quantity = scn.nextInt();
 
@@ -63,6 +66,15 @@ class Slot {
         }
 
 
+    }
+
+    void displayHospitalNameID() {
+        System.out.println("The hospital ID is " + HospitalID);
+        System.out.println("The Hospital Name is " + HospitalName);
+    }
+
+    ArrayList<Day> getDayList() {
+        return dayList;
     }
 
 
