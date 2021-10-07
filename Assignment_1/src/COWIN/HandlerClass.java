@@ -1,4 +1,5 @@
 package COWIN;
+
 import java.util.ArrayList;
 
 class HandlerClass {
@@ -24,8 +25,17 @@ class HandlerClass {
     }
 
     void addVaccine(String vaccineName, int DoseRequired, int gapRequired) {
-        vaccineList.add(new vaccine(vaccineName, DoseRequired, gapRequired));
+        vaccine temp = new vaccine(vaccineName, DoseRequired, gapRequired);
+        vaccineList.add(temp);
     }
+
+    void displayVaccineList() {
+        int i = 0;
+        while (i < vaccineList.size()) {
+            System.out.println("select " + i + " for " + vaccineList.get(i).getVaccineName());
+        }
+    }
+
 
     ArrayList<User> getUserList() {
         return (userList);
@@ -39,11 +49,5 @@ class HandlerClass {
         return (vaccineList);
     }
 
-    void displayVaccineList() {
-        int i = 0;
-        while (i < vaccineList.size()) {
-            System.out.println("select " + i + " for " + vaccineList.get(i).getVaccineName());
-        }
-    }
 
 }
