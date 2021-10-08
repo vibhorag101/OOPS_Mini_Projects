@@ -47,7 +47,7 @@ public class Main {
                     int age = scn.nextInt();
                     if (age < 18) {
                         System.out.println("Sorry below 18 years age are not allowed to register");
-                        System.exit(0);
+                        continue;
                     }
                     System.out.println("Enter your unique ID");
                     String userID = scn.next();

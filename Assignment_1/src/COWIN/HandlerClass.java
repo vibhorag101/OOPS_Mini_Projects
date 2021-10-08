@@ -30,19 +30,17 @@ class HandlerClass {
         return (userList);
     }
 
-    void checkVaccinationStatus(String userID){
-        for(User u: userList){
-            if(u.getUserID().equals(userID)){
+    void checkVaccinationStatus(String userID) {
+        for (User u : userList) {
+            if (u.getUserID().equals(userID)) {
                 String temp = u.getVaccineStatus();
-                if(temp.equals("Fully Vaccinated")){
+                if (temp.equals("Fully Vaccinated")) {
                     System.out.println("Congratulations you are fully vaccinated");
-                }
-                else if (temp.equals("Partially Vaccinated")){
+                } else if (temp.equals("Partially Vaccinated")) {
                     System.out.println("You are partially vaccinated");
-                    System.out.println("Next vaccine data is "+u.getNextDate());
-                }
-                else{
-                    System.out.println("You are not vaccinated! Kindly register for the slot");
+                    System.out.println("Next vaccine data is " + u.getNextDate());
+                } else {
+                    System.out.println("You are registered but not vaccinated!");
                 }
             }
         }
@@ -83,12 +81,13 @@ class HandlerClass {
 
     // functions related to the Slot class are below
 
-    void addSlot(String HospitalID, int SlotNumber, HandlerClass hC) {
-        Slot temp = new Slot(HospitalID, SlotNumber, hC);
+    void addSlot(String HospitalID, int numberOfSlots, HandlerClass hC) {
+        Slot temp = new Slot(HospitalID, numberOfSlots, hC);
         slotList.add(temp);
         temp.displaySlotDetails();
 
     }
+
 
     void slotDetailsByHospital(String id) {
         for (Slot s : slotList) {
@@ -178,18 +177,16 @@ class HandlerClass {
             System.out.println("You cant take this vaccine. Please select previously taken vaccine");
             System.exit(0);
         }
+        u.setVaccineTypeReceived(chosenVaccine);
         u.setReceivedVaccineName(chosenVaccineName);
         u.setDoseRecieved();
+        //below line decreases the vaccine quantity by 1
         s.getDayList().get(vaccineDayChosen).bookedSlot();
+        u.setVaccinationStatus();
         System.out.println(u.getUserName() + " vaccinated with " + chosenVaccineName);
         u.setNextDate(vaccineDayChosen, chosenVaccine.getGapRequired());
-        u.setVaccineTypeReceived(chosenVaccine);
+
     }
-
-
-
-
-
 
 
 }

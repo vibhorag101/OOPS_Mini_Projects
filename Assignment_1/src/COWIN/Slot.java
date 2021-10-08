@@ -35,9 +35,6 @@ class Slot {
         }
 
         void displayDayDetails() {
-//            System.out.println("Day Number is " + dayNumber);
-//            System.out.println("Quantity for day " + dayNumber + " is " + quantity);
-//            System.out.println("The vaccine is " + vaccineType.getVaccineName());
             System.out.println(quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
         }
 
@@ -60,27 +57,33 @@ class Slot {
         }
         this.h = hC;
         for (int i = 0; i < numberOfSlots; i++) {
-            System.out.println("Enter the quantity for day " + i);
+            System.out.println("Enter the day number");
+            int dayNum = scn.nextInt();
+            System.out.println("Enter the quantity for day " + dayNum);
             int quantity = scn.nextInt();
-
             h.displayVaccineList();
             int chosenVaccine = scn.nextInt();
-            dayList.add(new Day(i, quantity, h.getVaccineList().get(chosenVaccine)));
+            dayList.add(new Day(dayNum, quantity, h.getVaccineList().get(chosenVaccine)));
         }
     }
 
     void displaySlotDetails() {
         System.out.println("The hospital id is " + HospitalID);
         System.out.println("The number of slots are " + SlotNumber);
+        int slotCounter = 0;
         for (Day d : dayList) {
+            System.out.print("Option " + slotCounter + " --> ");
             d.displayDayDetails();
+            slotCounter++;
         }
 
 
     }
 
     void displaySlotDetailsMin() {
+        int slotCounter = 0;
         for (Day d : dayList) {
+            System.out.print("Option " + slotCounter + " --> ");
             d.displayDayDetails();
         }
     }
