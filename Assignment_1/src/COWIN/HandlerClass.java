@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class HandlerClass {
+    // all the declarations are below
     Scanner scn = new Scanner(System.in);
-    private int HospitalCounter=1;
-    //BUG Possible
+    private int HospitalCounter = 1;
     private final ArrayList<User> userList;
     private final ArrayList<Hospital> hospitalList;
     private final ArrayList<vaccine> vaccineList;
@@ -19,11 +19,36 @@ class HandlerClass {
         slotList = new ArrayList<>();
     }
 
+    // functions related to user Class are below
     void addUser(String userName, int Age, String UserID) {
         User temp = new User(userName, UserID, Age);
         userList.add(temp);
         temp.displayUserDetails();
     }
+
+    ArrayList<User> getUserList() {
+        return (userList);
+    }
+
+    void checkVaccinationStatus(String userID){
+        for(User u: userList){
+            if(u.getUserID().equals(userID)){
+                String temp = u.getVaccineStatus();
+                if(temp.equals("Fully Vaccinated")){
+                    System.out.println("Congratulations you are fully vaccinated");
+                }
+                else if (temp.equals("Partially Vaccinated")){
+                    System.out.println("You are partially vaccinated");
+                    System.out.println("Next vaccine data is "+u.getNextDate());
+                }
+                else{
+                    System.out.println("You are not vaccinated! Kindly register for the slot");
+                }
+            }
+        }
+
+    }
+    // function for the hospital class are below
 
     void addHospital(String hospitalName, int Pincode) {
         Hospital temp = new Hospital(hospitalName, Pincode, HospitalCounter);
@@ -32,18 +57,16 @@ class HandlerClass {
         HospitalCounter++;
     }
 
+    ArrayList<Hospital> getHospitalList() {
+        return (hospitalList);
+    }
+
+    // Functions for the vaccine class are below
+
     void addVaccine(String vaccineName, int DoseRequired, int gapRequired) {
         vaccine temp = new vaccine(vaccineName, DoseRequired, gapRequired);
         vaccineList.add(temp);
         temp.displayVaccine();
-    }
-
-    void addSlot(String HospitalID, int SlotNumber,HandlerClass hC) {
-        //todo do something related to eliminated HospitalName
-        Slot temp = new Slot(HospitalID, SlotNumber,hC);
-        slotList.add(temp);
-        temp.displaySlotDetails();
-
     }
 
     void displayVaccineList() {
@@ -54,10 +77,33 @@ class HandlerClass {
         }
     }
 
+    ArrayList<vaccine> getVaccineList() {
+        return (vaccineList);
+    }
+
+    // functions related to the Slot class are below
+
+    void addSlot(String HospitalID, int SlotNumber, HandlerClass hC) {
+        Slot temp = new Slot(HospitalID, SlotNumber, hC);
+        slotList.add(temp);
+        temp.displaySlotDetails();
+
+    }
+
+    void slotDetailsByHospital(String id) {
+        for (Slot s : slotList) {
+            if (s.getHospitalID().equals(id)) {
+                s.displaySlotDetailsMin();
+            }
+        }
+    }
+
+    // function to implement booking Mechanism are below
+
     void bookVaccineSlot(String userID) {
         User u = null;
-        for (User user: userList){
-            if (user.getUserID().equals(userID)){
+        for (User user : userList) {
+            if (user.getUserID().equals(userID)) {
                 u = user;
                 break;
             }
@@ -78,6 +124,7 @@ class HandlerClass {
             }
             if (notfoundFlag) {
                 System.out.println("No Hospital having slots in current pincode exists");
+                System.exit(0);
             }
             System.out.println("Enter the ID of the Hospital");
             String hospitalID = scn.next();
@@ -99,6 +146,7 @@ class HandlerClass {
                     //fixme there might be a bug here.
                     if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
                         s.displayHospitalNameID();
+                        break;
                     }
                 }
             }
@@ -117,10 +165,7 @@ class HandlerClass {
                 }
             }
 
-
         }
-        //searching part done , now need to do the booking part
-
 
     }
 
@@ -141,17 +186,10 @@ class HandlerClass {
         u.setVaccineTypeReceived(chosenVaccine);
     }
 
-    ArrayList<User> getUserList() {
-        return (userList);
-    }
 
-    ArrayList<Hospital> getHospitalList() {
-        return (hospitalList);
-    }
 
-    ArrayList<vaccine> getVaccineList() {
-        return (vaccineList);
-    }
+
+
 
 
 }

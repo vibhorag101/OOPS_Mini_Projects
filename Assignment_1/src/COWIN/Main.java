@@ -21,6 +21,7 @@ public class Main {
                 case 1:
                     System.out.println("Enter the vaccine name");
                     String VaccineName = scn.next();
+                    VaccineName += scn.nextLine();
                     System.out.println("Enter the number of doses of vaccine required");
                     int doseReq = scn.nextInt();
                     System.out.println("Enter the number of days of gap between doses");
@@ -31,6 +32,7 @@ public class Main {
                 case 2:
                     System.out.println("Enter the name of hospital to be registered");
                     String HospitalName = scn.next();
+                    HospitalName += scn.nextLine();
                     System.out.println("Enter the area pincode");
                     int Pincode = scn.nextInt();
                     hC.addHospital(HospitalName, Pincode);
@@ -39,8 +41,14 @@ public class Main {
                 case 3:
                     System.out.println("Enter Citizen Name");
                     String userName = scn.next();
+                    userName += scn.nextLine();
+                    System.out.println(userName);
                     System.out.println("Enter your age");
                     int age = scn.nextInt();
+                    if (age < 18) {
+                        System.out.println("Sorry below 18 years age are not allowed to register");
+                        System.exit(0);
+                    }
                     System.out.println("Enter your unique ID");
                     String userID = scn.next();
                     hC.addUser(userName, age, userID);
@@ -52,7 +60,7 @@ public class Main {
                     String HospitalID = scn.next();
                     System.out.println("Enter the number of Days");
                     int dayNum = scn.nextInt();
-                    hC.addSlot(HospitalID, dayNum,hC);
+                    hC.addSlot(HospitalID, dayNum, hC);
                     break;
 
                 case 5:
@@ -60,6 +68,23 @@ public class Main {
                     String id = scn.next();
                     hC.bookVaccineSlot(id);
                     break;
+
+
+                case 6:
+                    System.out.println("Enter the Hospital ID to get Slots");
+                    id = scn.next();
+                    hC.slotDetailsByHospital(id);
+                    break;
+
+
+                case 7:
+                    System.out.println("Enter the user ID");
+                    userID= scn.next();
+                    hC.checkVaccinationStatus(userID);
+                    break;
+
+
+
 
                 case 8:
                     System.exit(0);

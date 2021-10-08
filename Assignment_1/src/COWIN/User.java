@@ -15,11 +15,14 @@ class User {
     User(String name, String ID, int age) {
         if (age < 18) {
             System.out.println("Sorry, only people above 18 years age are allowed to register ");
+            System.exit(0);
         } else {
             this.userName = name;
             this.age = age;
             this.uniqueID_User = ID;
             this.registerStatus = "Registered";
+            this.vaccineStatus = "Not Vaccinated";
+            this.doseReceived=0;
         }
     }
 
@@ -42,10 +45,14 @@ class User {
     public void setReceivedVaccineName(String s) {
         recievedVaccineName = s;
     }
-    public String  getReceivedVaccineName(){
+
+    public String getReceivedVaccineName() {
         return (recievedVaccineName);
     }
 
+    public String getVaccineStatus(){
+        return (vaccineStatus);
+    }
 
     public int getDoseReceived() {
         return doseReceived;
@@ -61,6 +68,9 @@ class User {
         } else if (doseReceived > 0) {
             vaccineStatus = "Partially Vaccinated";
         }
+        else{
+            vaccineStatus = "Not Vaccinated";
+        }
 
     }
 
@@ -73,6 +83,10 @@ class User {
 
     void setVaccineTypeReceived(vaccine v) {
         this.vaccineTypeRecieved = v;
+    }
+
+    int getNextDate(){
+        return(nextDate);
     }
 
 

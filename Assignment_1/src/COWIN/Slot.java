@@ -35,12 +35,13 @@ class Slot {
         }
 
         void displayDayDetails() {
-//            System.out.println("Hospital ID is " + HospitalID);
-            System.out.println("Day Number is " + dayNumber);
-            System.out.println("Quantity for " + dayNumber + " is" + quantity);
-            System.out.println("The vaccine is " + vaccineType.getVaccineName());
+//            System.out.println("Day Number is " + dayNumber);
+//            System.out.println("Quantity for day " + dayNumber + " is " + quantity);
+//            System.out.println("The vaccine is " + vaccineType.getVaccineName());
+            System.out.println(quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
         }
-        void bookedSlot(){
+
+        void bookedSlot() {
             quantity--;
         }
 
@@ -48,16 +49,16 @@ class Slot {
 
     private final ArrayList<Day> dayList = new ArrayList<>();
 
-    Slot(String HospitalID, int numberOfSlots,HandlerClass hC) {
+    Slot(String HospitalID, int numberOfSlots, HandlerClass hC) {
         this.SlotNumber = numberOfSlots;
         this.HospitalID = HospitalID;
-        for (Hospital hospital : hC.getHospitalList()){
-            if (hospital.getHospitalUnique_ID().equals(HospitalID)){
-                this.HospitalName=hospital.getHospitalName();
+        for (Hospital hospital : hC.getHospitalList()) {
+            if (hospital.getHospitalUnique_ID().equals(HospitalID)) {
+                this.HospitalName = hospital.getHospitalName();
                 break;
             }
         }
-        this.h=hC;
+        this.h = hC;
         for (int i = 0; i < numberOfSlots; i++) {
             System.out.println("Enter the quantity for day " + i);
             int quantity = scn.nextInt();
@@ -78,14 +79,22 @@ class Slot {
 
     }
 
+    void displaySlotDetailsMin() {
+        for (Day d : dayList) {
+            d.displayDayDetails();
+        }
+    }
+
+
     void displayHospitalNameID() {
         System.out.println("The hospital ID is " + HospitalID);
         System.out.println("The Hospital Name is " + HospitalName);
     }
 
-    public String getHospitalID(){
+    public String getHospitalID() {
         return HospitalID;
     }
+
     ArrayList<Day> getDayList() {
         return dayList;
     }
