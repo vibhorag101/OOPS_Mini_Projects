@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 class HandlerClass {
     Scanner scn = new Scanner(System.in);
-    private int HospitalCounter;
+    private int HospitalCounter=1;
     //BUG Possible
     private final ArrayList<User> userList;
     private final ArrayList<Hospital> hospitalList;
@@ -20,23 +20,29 @@ class HandlerClass {
     }
 
     void addUser(String userName, int Age, String UserID) {
-        userList.add(new User(userName, UserID, Age));
+        User temp = new User(userName, UserID, Age);
+        userList.add(temp);
+        temp.displayUserDetails();
     }
 
     void addHospital(String hospitalName, int Pincode) {
-        hospitalList.add(new Hospital(hospitalName, Pincode, HospitalCounter));
+        Hospital temp = new Hospital(hospitalName, Pincode, HospitalCounter);
+        hospitalList.add(temp);
+        temp.displayHospitalDetails();
         HospitalCounter++;
     }
 
     void addVaccine(String vaccineName, int DoseRequired, int gapRequired) {
         vaccine temp = new vaccine(vaccineName, DoseRequired, gapRequired);
         vaccineList.add(temp);
+        temp.displayVaccine();
     }
 
-    void addSlot(String HospitalID, int SlotNumber, String HospitalName) {
+    void addSlot(String HospitalID, int SlotNumber,HandlerClass hC) {
         //todo do something related to eliminated HospitalName
-        Slot temp = new Slot(HospitalID, SlotNumber, HospitalName);
+        Slot temp = new Slot(HospitalID, SlotNumber,hC);
         slotList.add(temp);
+        temp.displaySlotDetails();
 
     }
 
@@ -44,11 +50,18 @@ class HandlerClass {
         int i = 0;
         while (i < vaccineList.size()) {
             System.out.println("select " + i + " for " + vaccineList.get(i).getVaccineName());
+            i++;
         }
     }
 
-    void bookVaccineSlot(User u) {
-        String userID = scn.next();
+    void bookVaccineSlot(String userID) {
+        User u = null;
+        for (User user: userList){
+            if (user.getUserID().equals(userID)){
+                u = user;
+                break;
+            }
+        }
         System.out.println("Enter 0 for search by Pincode");
         System.out.println("Enter 1 for search by Vaccine");
         System.out.println("Enter 2 to exit");
@@ -72,6 +85,7 @@ class HandlerClass {
                 if (s.getHospitalID().equals(hospitalID)) {
                     s.displaySlotDetails();
 
+                    assert u != null;
                     doBooking(u, s);
                 }
             }
@@ -97,6 +111,7 @@ class HandlerClass {
                             d.displayDayDetails();
                         }
                     }
+                    assert u != null;
                     doBooking(u, s);
 
                 }

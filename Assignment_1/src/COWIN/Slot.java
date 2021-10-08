@@ -7,8 +7,8 @@ class Slot {
     Scanner scn = new Scanner(System.in);
     private final String HospitalID;
     private final int SlotNumber;
-    private final String HospitalName;
-    private HandlerClass h;
+    private String HospitalName;
+    private final HandlerClass h;
 
     class Day {
         private final int dayNumber;
@@ -48,10 +48,16 @@ class Slot {
 
     private final ArrayList<Day> dayList = new ArrayList<>();
 
-    Slot(String HospitalID, int numberOfSlots, String HospitalName) {
+    Slot(String HospitalID, int numberOfSlots,HandlerClass hC) {
         this.SlotNumber = numberOfSlots;
         this.HospitalID = HospitalID;
-        this.HospitalName = HospitalName;
+        for (Hospital hospital : hC.getHospitalList()){
+            if (hospital.getHospitalUnique_ID().equals(HospitalID)){
+                this.HospitalName=hospital.getHospitalName();
+                break;
+            }
+        }
+        this.h=hC;
         for (int i = 0; i < numberOfSlots; i++) {
             System.out.println("Enter the quantity for day " + i);
             int quantity = scn.nextInt();
