@@ -50,10 +50,11 @@ class HandlerClass {
     void bookVaccineSlot(User u) {
         String userID = scn.next();
         System.out.println("Enter 0 for search by Pincode");
-        System.out.println("Enter 1 for search by Hospital");
+        System.out.println("Enter 1 for search by Vaccine");
         System.out.println("Enter 2 to exit");
         int choice = scn.nextInt();
         if (choice == 0) {
+            System.out.println("Enter the Pincode");
             int Pincode = scn.nextInt();
             boolean notfoundFlag = true;
             for (Hospital h : hospitalList) {
@@ -70,28 +71,34 @@ class HandlerClass {
             for (Slot s : slotList) {
                 if (s.getHospitalID().equals(hospitalID)) {
                     s.displaySlotDetails();
-                    System.out.println("Choose your Slot");
-                    int vaccineSlotChosen = scn.nextInt();
-                    vaccine chosenVaccine = s.getDayList().get(vaccineSlotChosen).getVaccineType();
-                    String chosenVaccineName = chosenVaccine.getVaccineName();
-                    u.setRecievedVaccineName(chosenVaccineName);
-                    u.setDoseRecieved();
-                    s.getDayList().get(vaccineSlotChosen).bookedSlot();
-                    System.out.println(u.getUserName() + " vaccinated with " + chosenVaccineName);
-                    u.setNextDate(vaccineSlotChosen, chosenVaccine.getGapRequired());
-                    u.setVaccineTypeReceived(chosenVaccine);
+
+                    doBooking(u, s);
                 }
             }
 
 
         } else {
-            String vaccineName = scn.next();
+            System.out.println("Enter the vaccine name");
+            String vaccineNameSearch = scn.next();
             for (Slot s : slotList) {
                 for (Slot.Day d : s.getDayList()) {
                     //fixme there might be a bug here.
-                    if (d.getVaccineType().getVaccineName().equals(vaccineName)) {
+                    if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
                         s.displayHospitalNameID();
                     }
+                }
+            }
+            System.out.println("Enter the ID of the Hospital");
+            String hospitalID = scn.next();
+            for (Slot s : slotList) {
+                if (s.getHospitalID().equals(hospitalID)) {
+                    for (Slot.Day d : s.getDayList()) {
+                        if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
+                            d.displayDayDetails();
+                        }
+                    }
+                    doBooking(u, s);
+
                 }
             }
 
@@ -100,6 +107,23 @@ class HandlerClass {
         //searching part done , now need to do the booking part
 
 
+    }
+
+    private void doBooking(User u, Slot s) {
+        System.out.println("Choose your Day");
+        int vaccineDayChosen = scn.nextInt();
+        vaccine chosenVaccine = s.getDayList().get(vaccineDayChosen).getVaccineType();
+        String chosenVaccineName = chosenVaccine.getVaccineName();
+        if ((u.getReceivedVaccineName() != null) && (!u.getReceivedVaccineName().equals(chosenVaccineName))) {
+            System.out.println("You cant take this vaccine. Please select previously taken vaccine");
+            System.exit(0);
+        }
+        u.setReceivedVaccineName(chosenVaccineName);
+        u.setDoseRecieved();
+        s.getDayList().get(vaccineDayChosen).bookedSlot();
+        System.out.println(u.getUserName() + " vaccinated with " + chosenVaccineName);
+        u.setNextDate(vaccineDayChosen, chosenVaccine.getGapRequired());
+        u.setVaccineTypeReceived(chosenVaccine);
     }
 
     ArrayList<User> getUserList() {

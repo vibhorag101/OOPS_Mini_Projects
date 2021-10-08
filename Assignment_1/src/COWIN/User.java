@@ -39,9 +39,13 @@ class User {
         doseReceived++;
     }
 
-    public void setRecievedVaccineName(String s) {
+    public void setReceivedVaccineName(String s) {
         recievedVaccineName = s;
     }
+    public String  getReceivedVaccineName(){
+        return (recievedVaccineName);
+    }
+
 
     public int getDoseReceived() {
         return doseReceived;
