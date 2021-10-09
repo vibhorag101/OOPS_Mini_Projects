@@ -108,6 +108,11 @@ class HandlerClass {
                 break;
             }
         }
+        assert u != null;
+        if(u.getVaccineStatus().equals("Fully Vaccinated")){
+            System.out.println("You can't register as you are already fully vaccinated");
+            return;
+        }
         System.out.println("Enter 0 for search by Pincode");
         System.out.println("Enter 1 for search by Vaccine");
         System.out.println("Enter 2 to exit");
@@ -130,9 +135,7 @@ class HandlerClass {
             String hospitalID = scn.next();
             for (Slot s : slotList) {
                 if (s.getHospitalID().equals(hospitalID)) {
-                    s.displaySlotDetails();
-
-                    assert u != null;
+                    s.displaySlotDetailsByDate(u);
                     doBooking(u, s);
                 }
             }
@@ -161,13 +164,15 @@ class HandlerClass {
                 if (s.getHospitalID().equals(hospitalID)) {
                     int slotDayCounter = 0;
                     for (Slot.Day d : s.getDayList()) {
-                        if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
-                            d.displayDayDetailsCounter(slotDayCounter);
 
+                        if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
+                            if (d.getDayNumber()>=u.getNextDate()) {
+                                d.displayDayDetailsCounter(slotDayCounter);
+
+                            }
                         }
                         slotDayCounter++;
                     }
-                    assert u != null;
                     doBooking(u, s);
 
                 }

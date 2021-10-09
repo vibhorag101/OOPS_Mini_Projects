@@ -40,7 +40,8 @@ class Slot {
         }
 
         void displayDayDetailsCounter(int counter) {
-            System.out.println("option " + counter + "---> " + quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
+                System.out.println("option " + counter + "---> " + quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
+
         }
 
         void bookedSlot() {
@@ -82,6 +83,26 @@ class Slot {
                 d.displayDayDetails();
             }
             slotCounter++;
+        }
+
+
+    }
+
+    void displaySlotDetailsByDate(User u) {
+        System.out.println("The hospital id is " + HospitalID);
+        System.out.println("The number of slots are " + numberOFDays);
+        int slotCounter = 0;
+        boolean notFoundFlag= true;
+        for (Day d : dayList) {
+            if (d.getQuantity() > 0 && d.getDayNumber()>=u.getNextDate()) {
+                System.out.print("Option " + slotCounter + " --> ");
+                d.displayDayDetails();
+                notFoundFlag = false;
+            }
+            slotCounter++;
+        }
+        if (notFoundFlag){
+            System.out.println("No Slots available applicable to you.");
         }
 
 

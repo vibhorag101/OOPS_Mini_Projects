@@ -19,6 +19,7 @@ class User {
         this.registerStatus = "Registered";
         this.vaccineStatus = "Not Vaccinated";
         this.doseReceived = 0;
+        this.nextDate=0;
     }
 
     public String getUserName() {
@@ -53,8 +54,8 @@ class User {
         return doseReceived;
     }
 
-    public void setNextDate(int slotNumber, int gap) {
-        nextDate = slotNumber + gap;
+    public void setNextDate(int dayNumber, int gap) {
+        nextDate = dayNumber + gap;
     }
 
     public void setVaccinationStatus() {
