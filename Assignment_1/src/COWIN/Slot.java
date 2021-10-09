@@ -37,6 +37,9 @@ class Slot {
         void displayDayDetails() {
             System.out.println(quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
         }
+        void displayDayDetailsCounter(int counter){
+            System.out.println("option "+counter+"---> "+quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
+        }
 
         void bookedSlot() {
             quantity--;
@@ -85,6 +88,7 @@ class Slot {
         for (Day d : dayList) {
             System.out.print("Option " + slotCounter + " --> ");
             d.displayDayDetails();
+            slotCounter++;
         }
     }
 

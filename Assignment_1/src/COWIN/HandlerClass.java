@@ -153,10 +153,13 @@ class HandlerClass {
             String hospitalID = scn.next();
             for (Slot s : slotList) {
                 if (s.getHospitalID().equals(hospitalID)) {
+                    int slotDayCounter = 0;
                     for (Slot.Day d : s.getDayList()) {
                         if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
-                            d.displayDayDetails();
+                            d.displayDayDetailsCounter(slotDayCounter);
+
                         }
+                        slotDayCounter++;
                     }
                     assert u != null;
                     doBooking(u, s);

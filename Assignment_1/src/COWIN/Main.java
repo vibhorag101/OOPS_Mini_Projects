@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) {
         HandlerClass hC = new HandlerClass();
         Scanner scn = new Scanner(System.in);
+        System.out.println("Enter 1 for adding vaccine");
+        System.out.println("Enter 2 for registering Hospital");
+        System.out.println("Enter 3 for registering user");
+        System.out.println("Enter 4 for adding slots");
+        System.out.println("Enter 5 for booking vaccination slot");
+        System.out.println("Enter 6 for Listing all slots in a Hospital");
+        System.out.println("Enter 7 for Checking Vaccination Status");
+        System.out.println("Enter 8 for exit");
         while (true) {
-            System.out.println("Enter 1 for adding vaccine");
-            System.out.println("Enter 2 for registering Hospital");
-            System.out.println("Enter 3 for registering user");
-            System.out.println("Enter 4 for adding slots");
-            System.out.println("Enter 5 for booking vaccination slot");
-            System.out.println("Enter 6 for Listing all slots in a Hospital");
-            System.out.println("Enter 7 for Checking Vaccination Status");
-            System.out.println("Enter 8 for exit");
             int chosenQuery = scn.nextInt();
             switch (chosenQuery) {
                 case 1:
