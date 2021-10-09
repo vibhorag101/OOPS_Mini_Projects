@@ -165,10 +165,9 @@ class HandlerClass {
                     int slotDayCounter = 0;
                     for (Slot.Day d : s.getDayList()) {
 
-                        if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
+                        if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch) && d.getQuantity() > 0) {
                             if (d.getDayNumber()>=u.getNextDate()) {
                                 d.displayDayDetailsCounter(slotDayCounter);
-
                             }
                         }
                         slotDayCounter++;

@@ -40,7 +40,7 @@ class Slot {
         }
 
         void displayDayDetailsCounter(int counter) {
-                System.out.println("option " + counter + "---> " + quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
+            System.out.println("option " + counter + "---> " + quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
 
         }
 
@@ -92,16 +92,16 @@ class Slot {
         System.out.println("The hospital id is " + HospitalID);
         System.out.println("The number of slots are " + numberOFDays);
         int slotCounter = 0;
-        boolean notFoundFlag= true;
+        boolean notFoundFlag = true;
         for (Day d : dayList) {
-            if (d.getQuantity() > 0 && d.getDayNumber()>=u.getNextDate()) {
+            if (d.getQuantity() > 0 && d.getDayNumber() >= u.getNextDate()) {
                 System.out.print("Option " + slotCounter + " --> ");
                 d.displayDayDetails();
                 notFoundFlag = false;
             }
             slotCounter++;
         }
-        if (notFoundFlag){
+        if (notFoundFlag) {
             System.out.println("No Slots available applicable to you.");
         }
 
@@ -110,10 +110,17 @@ class Slot {
 
     void displaySlotDetailsMin() {
         int slotCounter = 0;
+        boolean notFoundFlag = true;
         for (Day d : dayList) {
-            System.out.print("Option " + slotCounter + " --> ");
-            d.displayDayDetails();
-            slotCounter++;
+            if (d.getQuantity() > 0) {
+                System.out.print("Option " + slotCounter + " --> ");
+                d.displayDayDetails();
+                notFoundFlag= false;
+                slotCounter++;
+            }
+        }
+        if (notFoundFlag) {
+            System.out.println("This Hospital does not have any vaccine slots");
         }
     }
 

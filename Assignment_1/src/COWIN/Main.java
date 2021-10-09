@@ -24,11 +24,10 @@ public class Main {
                     VaccineName += scn.nextLine();
                     System.out.println("Enter the number of doses of vaccine required");
                     int doseReq = scn.nextInt();
-                    if(doseReq<=0){
+                    if (doseReq <= 0) {
                         System.out.println("Please add correct number of doses");
                         continue;
-                    }
-                    else if (doseReq <= 1) {
+                    } else if (doseReq <= 1) {
                         hC.addVaccine(VaccineName, doseReq, 0);
                     } else {
                         System.out.println("Enter the number of days of gap between doses");
