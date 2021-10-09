@@ -1,10 +1,10 @@
 package COWIN;
 
 class User {
-    private String userName;
-    private String uniqueID_User;
-    private int age;
-    private String registerStatus;
+    private final String userName;
+    private final String uniqueID_User;
+    private final int age;
+    private final String registerStatus;
     private String receivedVaccineName;
     private int doseReceived;
     private String vaccineStatus;
@@ -13,17 +13,12 @@ class User {
 
 
     User(String name, String ID, int age) {
-        if (age < 18) {
-            System.out.println("Sorry, only people above 18 years age are allowed to register ");
-            System.exit(0);
-        } else {
-            this.userName = name;
-            this.age = age;
-            this.uniqueID_User = ID;
-            this.registerStatus = "Registered";
-            this.vaccineStatus = "Not Vaccinated";
-            this.doseReceived=0;
-        }
+        this.userName = name;
+        this.age = age;
+        this.uniqueID_User = ID;
+        this.registerStatus = "Registered";
+        this.vaccineStatus = "Not Vaccinated";
+        this.doseReceived=0;
     }
 
     public String getUserName() {

@@ -6,9 +6,10 @@ import java.util.Scanner;
 class Slot {
     Scanner scn = new Scanner(System.in);
     private final String HospitalID;
-    private final int SlotNumber;
+    private final int numberOFDays;
     private String HospitalName;
     private final HandlerClass h;
+
 
     class Day {
         private final int dayNumber;
@@ -37,8 +38,9 @@ class Slot {
         void displayDayDetails() {
             System.out.println(quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
         }
-        void displayDayDetailsCounter(int counter){
-            System.out.println("option "+counter+"---> "+quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
+
+        void displayDayDetailsCounter(int counter) {
+            System.out.println("option " + counter + "---> " + quantity + " " + vaccineType.getVaccineName() + " vaccines available for  day " + dayNumber);
         }
 
         void bookedSlot() {
@@ -49,8 +51,8 @@ class Slot {
 
     private final ArrayList<Day> dayList = new ArrayList<>();
 
-    Slot(String HospitalID, int numberOfSlots, HandlerClass hC) {
-        this.SlotNumber = numberOfSlots;
+    Slot(String HospitalID, int numberOFDays, HandlerClass hC) {
+        this.numberOFDays = numberOFDays;
         this.HospitalID = HospitalID;
         for (Hospital hospital : hC.getHospitalList()) {
             if (hospital.getHospitalUnique_ID().equals(HospitalID)) {
@@ -59,7 +61,7 @@ class Slot {
             }
         }
         this.h = hC;
-        for (int i = 0; i < numberOfSlots; i++) {
+        for (int i = 0; i < numberOFDays; i++) {
             System.out.println("Enter the day number");
             int dayNum = scn.nextInt();
             System.out.println("Enter the quantity for day " + dayNum);
@@ -72,11 +74,13 @@ class Slot {
 
     void displaySlotDetails() {
         System.out.println("The hospital id is " + HospitalID);
-        System.out.println("The number of slots are " + SlotNumber);
+        System.out.println("The number of slots are " + numberOFDays);
         int slotCounter = 0;
         for (Day d : dayList) {
-            System.out.print("Option " + slotCounter + " --> ");
-            d.displayDayDetails();
+            if (d.getQuantity() > 0) {
+                System.out.print("Option " + slotCounter + " --> ");
+                d.displayDayDetails();
+            }
             slotCounter++;
         }
 

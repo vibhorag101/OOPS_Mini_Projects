@@ -144,7 +144,7 @@ class HandlerClass {
             boolean notfoundFlag = true;
             for (Slot s : slotList) {
                 for (Slot.Day d : s.getDayList()) {
-                    if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
+                    if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch) && d.getQuantity()>0) {
                         s.displayHospitalNameID();
                         notfoundFlag = false;
                         break;
