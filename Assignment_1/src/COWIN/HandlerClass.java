@@ -100,6 +100,7 @@ class HandlerClass {
     // function to implement booking Mechanism are below
 
     void bookVaccineSlot(String userID) {
+
         User u = null;
         for (User user : userList) {
             if (user.getUserID().equals(userID)) {
@@ -123,7 +124,7 @@ class HandlerClass {
             }
             if (notfoundFlag) {
                 System.out.println("No Hospital having slots in current pincode exists");
-                System.exit(0);
+                return;
             }
             System.out.println("Enter the ID of the Hospital");
             String hospitalID = scn.next();
@@ -140,14 +141,19 @@ class HandlerClass {
         } else {
             System.out.println("Enter the vaccine name");
             String vaccineNameSearch = scn.next();
+            boolean notfoundFlag = true;
             for (Slot s : slotList) {
                 for (Slot.Day d : s.getDayList()) {
-                    //fixme there might be a bug here.
                     if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch)) {
                         s.displayHospitalNameID();
+                        notfoundFlag = false;
                         break;
                     }
                 }
+            }
+            if (notfoundFlag) {
+                System.out.println("No Hospital having slots with current vaccine exists");
+                return;
             }
             System.out.println("Enter the ID of the Hospital");
             String hospitalID = scn.next();
@@ -178,11 +184,11 @@ class HandlerClass {
         String chosenVaccineName = chosenVaccine.getVaccineName();
         if ((u.getReceivedVaccineName() != null) && (!u.getReceivedVaccineName().equals(chosenVaccineName))) {
             System.out.println("You cant take this vaccine. Please select previously taken vaccine");
-            System.exit(0);
+            return;
         }
         u.setVaccineTypeReceived(chosenVaccine);
         u.setReceivedVaccineName(chosenVaccineName);
-        u.setDoseRecieved();
+        u.setDoseReceived();
         //below line decreases the vaccine quantity by 1
         s.getDayList().get(vaccineDayChosen).bookedSlot();
         u.setVaccinationStatus();

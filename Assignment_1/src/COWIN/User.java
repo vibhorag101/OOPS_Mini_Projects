@@ -5,11 +5,11 @@ class User {
     private String uniqueID_User;
     private int age;
     private String registerStatus;
-    private String recievedVaccineName;
+    private String receivedVaccineName;
     private int doseReceived;
     private String vaccineStatus;
     private int nextDate;
-    private vaccine vaccineTypeRecieved;
+    private vaccine vaccineTypeReceived;
 
 
     User(String name, String ID, int age) {
@@ -38,16 +38,16 @@ class User {
         return age;
     }
 
-    public void setDoseRecieved() {
+    public void setDoseReceived() {
         doseReceived++;
     }
 
     public void setReceivedVaccineName(String s) {
-        recievedVaccineName = s;
+        receivedVaccineName = s;
     }
 
     public String getReceivedVaccineName() {
-        return (recievedVaccineName);
+        return (receivedVaccineName);
     }
 
     public String getVaccineStatus(){
@@ -63,7 +63,7 @@ class User {
     }
 
     public void setVaccinationStatus() {
-        if (doseReceived == vaccineTypeRecieved.getDoseRequired()) {
+        if (doseReceived == vaccineTypeReceived.getDoseRequired()) {
             vaccineStatus = "Fully Vaccinated";
         } else if (doseReceived > 0) {
             vaccineStatus = "Partially Vaccinated";
@@ -82,7 +82,7 @@ class User {
     }
 
     void setVaccineTypeReceived(vaccine v) {
-        this.vaccineTypeRecieved = v;
+        this.vaccineTypeReceived = v;
     }
 
     int getNextDate(){
