@@ -38,7 +38,7 @@ class HandlerClass {
                     System.out.println("Congratulations you are fully vaccinated");
                 } else if (temp.equals("Partially Vaccinated")) {
                     System.out.println("You are partially vaccinated");
-                    System.out.println("Next vaccine data is " + u.getNextDate());
+                    System.out.println("Next vaccine date is " + u.getNextDate());
                 } else {
                     System.out.println("You are registered but not vaccinated!");
                 }
@@ -144,7 +144,7 @@ class HandlerClass {
             boolean notfoundFlag = true;
             for (Slot s : slotList) {
                 for (Slot.Day d : s.getDayList()) {
-                    if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch) && d.getQuantity()>0) {
+                    if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch) && d.getQuantity() > 0) {
                         s.displayHospitalNameID();
                         notfoundFlag = false;
                         break;
@@ -180,6 +180,7 @@ class HandlerClass {
     private void doBooking(User u, Slot s) {
         System.out.println("Choose your Day");
         int vaccineDayChosen = scn.nextInt();
+        int vaccineDayNumberChosen = s.getDayList().get(vaccineDayChosen).getDayNumber();
         vaccine chosenVaccine = s.getDayList().get(vaccineDayChosen).getVaccineType();
         String chosenVaccineName = chosenVaccine.getVaccineName();
         if ((u.getReceivedVaccineName() != null) && (!u.getReceivedVaccineName().equals(chosenVaccineName))) {
@@ -193,7 +194,7 @@ class HandlerClass {
         s.getDayList().get(vaccineDayChosen).bookedSlot();
         u.setVaccinationStatus();
         System.out.println(u.getUserName() + " vaccinated with " + chosenVaccineName);
-        u.setNextDate(vaccineDayChosen, chosenVaccine.getGapRequired());
+        u.setNextDate(vaccineDayNumberChosen, chosenVaccine.getGapRequired());
 
     }
 

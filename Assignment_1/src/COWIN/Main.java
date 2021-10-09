@@ -24,9 +24,14 @@ public class Main {
                     VaccineName += scn.nextLine();
                     System.out.println("Enter the number of doses of vaccine required");
                     int doseReq = scn.nextInt();
-                    System.out.println("Enter the number of days of gap between doses");
-                    int gap = scn.nextInt();
-                    hC.addVaccine(VaccineName, doseReq, gap);
+                    if (doseReq <= 1) {
+                        hC.addVaccine(VaccineName, doseReq, 0);
+                    } else {
+                        System.out.println("Enter the number of days of gap between doses");
+                        int gap = scn.nextInt();
+                        hC.addVaccine(VaccineName, doseReq, gap);
+                    }
+
                     break;
 
                 case 2:
@@ -79,14 +84,13 @@ public class Main {
 
                 case 7:
                     System.out.println("Enter the user ID");
-                    userID= scn.next();
+                    userID = scn.next();
                     hC.checkVaccinationStatus(userID);
                     break;
 
 
-
-
                 case 8:
+                    System.out.println("Thanks for using CoWin portal");
                     System.exit(0);
 
 

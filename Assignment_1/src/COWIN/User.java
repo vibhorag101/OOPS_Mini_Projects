@@ -18,7 +18,7 @@ class User {
         this.uniqueID_User = ID;
         this.registerStatus = "Registered";
         this.vaccineStatus = "Not Vaccinated";
-        this.doseReceived=0;
+        this.doseReceived = 0;
     }
 
     public String getUserName() {
@@ -45,7 +45,7 @@ class User {
         return (receivedVaccineName);
     }
 
-    public String getVaccineStatus(){
+    public String getVaccineStatus() {
         return (vaccineStatus);
     }
 
@@ -62,8 +62,7 @@ class User {
             vaccineStatus = "Fully Vaccinated";
         } else if (doseReceived > 0) {
             vaccineStatus = "Partially Vaccinated";
-        }
-        else{
+        } else {
             vaccineStatus = "Not Vaccinated";
         }
 
@@ -80,8 +79,8 @@ class User {
         this.vaccineTypeReceived = v;
     }
 
-    int getNextDate(){
-        return(nextDate);
+    int getNextDate() {
+        return (nextDate);
     }
 
 
