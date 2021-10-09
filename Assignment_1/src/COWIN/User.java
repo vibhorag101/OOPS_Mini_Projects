@@ -19,7 +19,7 @@ class User {
         this.registerStatus = "Registered";
         this.vaccineStatus = "Not Vaccinated";
         this.doseReceived = 0;
-        this.nextDate=0;
+        this.nextDate = 0;
     }
 
     public String getUserName() {

@@ -88,7 +88,7 @@ class Slot {
 
     }
 
-    void displaySlotDetailsByDate(User u) {
+    boolean displaySlotDetailsByDate(User u) {
         System.out.println("The hospital id is " + HospitalID);
         System.out.println("The number of slots are " + numberOFDays);
         int slotCounter = 0;
@@ -103,8 +103,9 @@ class Slot {
         }
         if (notFoundFlag) {
             System.out.println("No Slots available applicable to you.");
+            return false;
         }
-
+        return true;
 
     }
 
@@ -115,7 +116,7 @@ class Slot {
             if (d.getQuantity() > 0) {
                 System.out.print("Option " + slotCounter + " --> ");
                 d.displayDayDetails();
-                notFoundFlag= false;
+                notFoundFlag = false;
                 slotCounter++;
             }
         }

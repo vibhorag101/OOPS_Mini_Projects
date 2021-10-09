@@ -109,7 +109,7 @@ class HandlerClass {
             }
         }
         assert u != null;
-        if(u.getVaccineStatus().equals("Fully Vaccinated")){
+        if (u.getVaccineStatus().equals("Fully Vaccinated")) {
             System.out.println("You can't register as you are already fully vaccinated");
             return;
         }
@@ -135,8 +135,11 @@ class HandlerClass {
             String hospitalID = scn.next();
             for (Slot s : slotList) {
                 if (s.getHospitalID().equals(hospitalID)) {
-                    s.displaySlotDetailsByDate(u);
-                    doBooking(u, s);
+                    boolean empCheck = s.displaySlotDetailsByDate(u);
+                    if (empCheck) {
+                        doBooking(u, s);
+                    }
+
                 }
             }
 
@@ -163,14 +166,20 @@ class HandlerClass {
             for (Slot s : slotList) {
                 if (s.getHospitalID().equals(hospitalID)) {
                     int slotDayCounter = 0;
+                    boolean notFoundFlag = true;
                     for (Slot.Day d : s.getDayList()) {
 
                         if (d.getVaccineType().getVaccineName().equals(vaccineNameSearch) && d.getQuantity() > 0) {
-                            if (d.getDayNumber()>=u.getNextDate()) {
+                            if (d.getDayNumber() >= u.getNextDate()) {
                                 d.displayDayDetailsCounter(slotDayCounter);
+                                notFoundFlag = false;
                             }
                         }
                         slotDayCounter++;
+                    }
+                    if (notFoundFlag) {
+                        System.out.println("No slots available");
+                        return;
                     }
                     doBooking(u, s);
 
