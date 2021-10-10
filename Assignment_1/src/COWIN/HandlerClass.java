@@ -113,11 +113,11 @@ class HandlerClass {
             System.out.println("You can't register as you are already fully vaccinated");
             return;
         }
-        System.out.println("Enter 0 for search by Pincode");
-        System.out.println("Enter 1 for search by Vaccine");
-        System.out.println("Enter 2 to exit");
+        System.out.println("Enter 1 for search by Pincode");
+        System.out.println("Enter 2 for search by Vaccine");
+        System.out.println("Enter 3 to exit");
         int choice = scn.nextInt();
-        if (choice == 0) {
+        if (choice == 1) {
             System.out.println("Enter the Pincode");
             int Pincode = scn.nextInt();
             boolean notfoundFlag = true;
@@ -144,7 +144,7 @@ class HandlerClass {
             }
 
 
-        } else {
+        } else if(choice==2) {
             System.out.println("Enter the vaccine name");
             String vaccineNameSearch = scn.next();
             boolean notfoundFlag = true;
@@ -186,6 +186,10 @@ class HandlerClass {
                 }
             }
 
+        }
+        else{
+            System.out.println("Thanks for using CoWin Portal ! Now exiting");
+            System.exit(0);
         }
 
     }
