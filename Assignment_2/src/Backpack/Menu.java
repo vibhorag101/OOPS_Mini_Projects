@@ -70,8 +70,9 @@ public class Menu {
                     break;
 
                 case 6:
+                    scn.nextLine();
                     System.out.println("Enter the comments to be added");
-                    String commentByStudent = scn.next();
+                    String commentByStudent = scn.nextLine();
                     bM.addComment(studentName, commentByStudent);
                     break;
 
@@ -106,17 +107,21 @@ public class Menu {
                     System.out.println("Enter 1 to add lecture slides");
                     System.out.println("Enter 2 to add lecture video");
                     int chosenMaterial = scn.nextInt();
+                    scn.nextLine();
                     if (chosenMaterial == 1) {
                         System.out.println("Add slide topic");
-                        String slideTopic = scn.next();
+                        scn.nextLine();
+                        String slideTopic = scn.nextLine();
                         System.out.println("Enter number of slides");
                         int numSlides = scn.nextInt();
+                        scn.nextLine();
                         bM.addMaterialSlides(slideTopic, numSlides, chosenInstructor);
                     } else {
                         System.out.println("Add video topic");
-                        String videoName = scn.next();
+                        scn.nextLine();
+                        String videoName = scn.nextLine();
                         System.out.println("Enter the video file name");
-                        String videoFileName = scn.next();
+                        String videoFileName = scn.nextLine();
                         bM.addMaterialVideo(videoName, videoFileName, chosenInstructor);
                     }
                     break;
@@ -126,15 +131,17 @@ public class Menu {
                     System.out.println("Enter 1 for assignment");
                     System.out.println("Enter 2 for quiz");
                     int chosenPattern = scn.nextInt();
+                    scn.nextLine();
                     if (chosenPattern == 1) {
                         System.out.println("Add problem statement for assignment");
-                        String assignmentProblem = scn.next();
+                        String assignmentProblem = scn.nextLine();
                         System.out.println("Enter Maximum marks for the assignments");
                         int maxMarks = scn.nextInt();
+                        scn.nextLine();
                         bM.addAssignment(assignmentProblem, maxMarks, instructorName);
                     } else {
                         System.out.println("Enter quiz question");
-                        String quizProblem = scn.next();
+                        String quizProblem = scn.nextLine();
                         bM.addQuiz(quizProblem, instructorName);
                     }
                     break;
@@ -152,7 +159,7 @@ public class Menu {
                     break;
 
                 case 6:
-                    bM.closeAssignment(instructorName);
+                    bM.closeAssignment();
                     break;
 
                 case 7:
@@ -160,8 +167,9 @@ public class Menu {
                     break;
 
                 case 8:
+                    scn.nextLine();
                     System.out.println("Enter the comments to be added");
-                    String commentByStudent = scn.next();
+                    String commentByStudent = scn.nextLine();
                     bM.addComment(instructorName, commentByStudent);
                     break;
 

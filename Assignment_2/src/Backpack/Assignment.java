@@ -150,7 +150,7 @@ public class Assignment {
         if (problemType.equals("assignment")) {
             System.out.println("ID : " + counter + " | Assignment : " + assignProblemStatement + " Max Marks " + maxMarks + " Open Status ---> " + getAssignOpenStatus());
         } else {
-            System.out.println("ID " + counter + " Question : " + quizProblemStatement + " Open Status " + getAssignOpenStatus());
+            System.out.println("ID " + counter + " Question : " + quizProblemStatement + " Open Status ---> " + getAssignOpenStatus());
         }
     }
 

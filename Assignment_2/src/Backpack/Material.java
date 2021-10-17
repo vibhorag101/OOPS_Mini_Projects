@@ -25,7 +25,7 @@ public class Material {
         this.materialTime = getTime();
         for (int i = 0; i < numberOfSlides; i++) {
             System.out.println("Enter the content for slide " + (i + 1));
-            String temp = scn.next();
+            String temp = scn.nextLine();
             slideContent.add(temp);
         }
     }
@@ -36,12 +36,14 @@ public class Material {
         this.videoFileName = videoFileName;
         this.instructor = instructor;
         this.materialType = "video";
+        this.materialTime = getTime();
     }
 
     void viewLectureMaterial() {
         if (materialType.equals("slides")) {
             System.out.println("Lecture Slides By -> " + instructor);
             System.out.println("Lecture Slide Topic -> " + slideTopic);
+            System.out.println("Date of Upload : "+materialTime);
             int counter = 1;
             for (String s : slideContent) {
                 System.out.println("Slide " + counter);
@@ -50,6 +52,7 @@ public class Material {
         } else {
             System.out.println("Lecture Video By -> " + instructor);
             System.out.println("Lecture Video Topic -> " + videoTopic);
+            System.out.println("Date of Upload : "+materialTime);
         }
     }
 
@@ -57,10 +60,12 @@ public class Material {
         if (materialType.equals("slides")) {
             System.out.println("Lecture Slides By -> " + instructor);
             System.out.println("Lecture Slide Topic -> " + slideTopic);
+            System.out.println("Date of Upload : "+materialTime);
 
         } else {
             System.out.println("Lecture Video By -> " + instructor);
             System.out.println("Lecture Video Topic -> " + videoTopic);
+            System.out.println("Date of Upload : "+materialTime);
         }
     }
 

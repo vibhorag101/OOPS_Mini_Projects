@@ -66,12 +66,9 @@ public class backpackManager {
         int counter = 1;
         for (Material m : materialArrayList) {
             System.out.println("Material " + counter);
-            m.viewLectureMaterialTopic();
+            m.viewLectureMaterial();
             counter++;
         }
-        System.out.println("Choose material you want to view");
-        int chosen = scn.nextInt();
-        materialArrayList.get(chosen - 1).viewLectureMaterial();
     }
 
     void viewMaterialByInstructor(String instructorName) {
@@ -80,17 +77,13 @@ public class backpackManager {
         for (Material m : materialArrayList) {
             if (m.getInstructorName().equals(instructorName)) {
                 System.out.println("Material " + counter);
-                m.viewLectureMaterialTopic();
+                m.viewLectureMaterial();
                 counter++;
                 notFoundFlag = false;
             }
         }
         if (notFoundFlag) {
             System.out.println("You have not added any material");
-        } else {
-            System.out.println("Choose material you want to view");
-            int chosen = scn.nextInt();
-            materialArrayList.get(chosen - 1).viewLectureMaterial();
         }
     }
 
@@ -166,17 +159,18 @@ public class backpackManager {
         } else {
             System.out.println("Choose option to submit assignment");
             int chosenOption = scn.nextInt();
+            scn.nextLine();
             Assignment chosenAssignment = assignmentArrayList.get(chosenOption);
             for (Assignment.studentForAssignment s : chosenAssignment.getStudentListForAssignment()) {
                 if ((s.getStudentName().equals(studentName))) {
                     if (chosenAssignment.getProblemType().equals("quiz")) {
                         System.out.println("Enter your response to quiz");
-                        String quizAns = scn.next();
+                        String quizAns = scn.nextLine();
                         s.setQuizAns(quizAns);
                         s.setCompletionStatus();
                     } else {
                         System.out.println("Enter the filename to submit assignment");
-                        String fileName = scn.next();
+                        String fileName = scn.nextLine();
                         String fileExt = fileName.substring(fileName.length() - 4, fileName.length());
                         if (!fileExt.equals(".zip")) {
                             System.out.println("Please enter a valid file and try again");
@@ -301,11 +295,11 @@ public class backpackManager {
         }
     }
 
-    public void closeAssignment(String instructorName) {
+    public void closeAssignment() {
         int counter = 0;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
-            if (instructorName.equals(a.getInstructorName()) && a.getAssignOpenStatus()) {
+            if (a.getAssignOpenStatus()) {
                 a.viewAssignmentInstructor(counter);
                 notFoundFlag = false;
             }
