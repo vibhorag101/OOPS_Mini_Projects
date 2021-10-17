@@ -13,12 +13,14 @@ public class Material {
     private String videoTopic;
     private String videoFileName;
     private String materialTime;
+    private String instructor;
 
-    Material(String slideTopic, int numberOfSlides) {
+    Material(String slideTopic, int numberOfSlides, String instructor) {
         this.slideTopic = slideTopic;
         this.numberOfSlides = numberOfSlides;
         this.materialType = "slides";
         this.slideContent = new ArrayList<>();
+        this.instructor = instructor;
         this.materialTime = getTime();
         for (int i = 0; i < numberOfSlides; i++) {
             System.out.println("Enter the content for slide " + (i + 1));
@@ -30,6 +32,32 @@ public class Material {
     Material(String videoTopic, String videoFileName) {
         this.videoTopic = videoTopic;
         this.videoFileName = videoFileName;
+    }
+
+    void viewLectureMaterial() {
+        if (materialType.equals("slides")) {
+            System.out.println("Lecture Slides By -> " + instructor);
+            System.out.println("Lecture Slide Topic -> " + slideTopic);
+            int counter = 1;
+            for (String s : slideContent) {
+                System.out.println("Slide " + counter);
+                System.out.println(s);
+            }
+        } else {
+            System.out.println("Lecture Video By -> " + instructor);
+            System.out.println("Lecture Video Topic -> " + videoTopic);
+        }
+    }
+
+    void viewLectureMaterialTopic() {
+        if (materialType.equals("slides")) {
+            System.out.println("Lecture Slides By -> " + instructor);
+            System.out.println("Lecture Slide Topic -> " + slideTopic);
+
+        } else {
+            System.out.println("Lecture Video By -> " + instructor);
+            System.out.println("Lecture Video Topic -> " + videoTopic);
+        }
     }
 
     public static String getTime() {
@@ -59,7 +87,8 @@ public class Material {
     public String getMaterialTime() {
         return materialTime;
     }
-    public ArrayList<String> getSlideContent(){
+
+    public ArrayList<String> getSlideContent() {
         return slideContent;
     }
 }
