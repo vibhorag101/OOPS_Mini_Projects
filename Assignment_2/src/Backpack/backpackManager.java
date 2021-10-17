@@ -156,7 +156,7 @@ public class backpackManager {
         }
     }
 
-    public void gradeAssignment(String instructorName){
+    public void gradeAssignment(String instructorName) {
         int counter = 0;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
@@ -169,11 +169,76 @@ public class backpackManager {
         if (notFoundFlag) {
             System.out.println("You have no assignment to grade");
         } else {
-            System.out.println("Select the assignment to close");
+            System.out.println("Select the assignment to grade");
             int chosenOption = scn.nextInt();
-            assignmentArrayList.get(chosenOption).setAssignOpenStatus(false);
+            Assignment chosenAssignment = assignmentArrayList.get(chosenOption);
+            notFoundFlag = true;
+            counter = 0;
+            for (Assignment.studentForAssignment s : chosenAssignment.getStudentListForAssignment()) {
+                if (!s.isHasBeenGraded() && s.getCompletionStatus()) {
+                    System.out.println("option " + counter + " -> " + s.getStudentName());
+                    notFoundFlag = false;
+                }
+                counter++;
+            }
+            if (notFoundFlag) {
+                System.out.println("There are no ungraded submissions");
+            } else {
+                System.out.println("Choose the ID of ungraded submissions");
+                int chosenStudentOption = scn.nextInt();
+                Assignment.studentForAssignment chosenStudent = chosenAssignment.getStudentListForAssignment().get(chosenStudentOption);
+                String assignmentType = chosenAssignment.getProblemType();
+                if (assignmentType.equals("assignment")) {
+                    System.out.println("Max marks are " + chosenAssignment.getMaxMarks());
+                    System.out.println("Submitted assignment " + chosenStudent.getSubmitFileName());
+                    System.out.println("Enter the marks you want to give");
+                    int marksGiven = scn.nextInt();
+                    chosenStudent.setMarksReceived(marksGiven);
+                } else {
+                    System.out.println("Submitted Ans " + chosenStudent.getQuizAns());
+                    System.out.println("true for correct ans and false otherwise");
+                    boolean quizGrade = scn.nextBoolean();
+                    if (quizGrade) {
+                        chosenStudent.setMarksReceived(1);
+                    }
+                }
+            }
         }
 
+    }
+
+    public void viewGrade(String studentName) {
+        ArrayList<Assignment.studentForAssignment> gradedList = new ArrayList<>();
+        ArrayList<Assignment.studentForAssignment> ungradedList = new ArrayList<>();
+
+        for (Assignment a : assignmentArrayList) {
+            for (Assignment.studentForAssignment s : a.getStudentListForAssignment()) {
+                if (s.getStudentName().equals(studentName) && s.getCompletionStatus() && s.isHasBeenGraded()) {
+                    gradedList.add(s);
+                } else if (s.getStudentName().equals(studentName) && s.getCompletionStatus() && !s.isHasBeenGraded()) {
+                    ungradedList.add(s);
+                }
+            }
+        }
+        if (ungradedList.size() == 0 && gradedList.size() == 0) {
+            System.out.println("All your submissions have been graded");
+        } else if (ungradedList.size() == 0) {
+            System.out.println("There are no Ungraded Submissions");
+            System.out.println("Graded Submissions");
+            for (Assignment.studentForAssignment s : gradedList) {
+                System.out.println("Submission file name ---> " + s.getSubmitFileName());
+                System.out.println("You have been given " + s.getMarksReceived() + " Marks out of " + s.getMaxMarks() + " Marks");
+                System.out.println("Graded By --> " + s.getInstructorName());
+            }
+        } else {
+            System.out.println("There are no Graded Submissions");
+            System.out.println("Ungraded Submissions");
+            for (Assignment.studentForAssignment s : ungradedList) {
+                System.out.println("Submission file name ---> " + s.getSubmitFileName());
+                System.out.println("You have been given " + s.getMarksReceived() + " Marks out of " + s.getMaxMarks() + " Marks");
+                System.out.println("Graded By --> " + s.getInstructorName());
+            }
+        }
     }
 
     public void closeAssignment(String instructorName) {
@@ -194,7 +259,6 @@ public class backpackManager {
             assignmentArrayList.get(chosenOption).setAssignOpenStatus(false);
         }
     }
-
 
 
     // getter methods are here for encapsulation

@@ -25,12 +25,16 @@ public class Assignment {
         private int marksReceived;
         private String submitFileName;
         private String quizAns;
+        private String instructorName;
+        private int maxMarks;
 
         studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
             completionStatus = false;
-            this.marksReceived = -1;
+            this.marksReceived = 0;
             hasBeenGraded = false;
+            this.instructorName = Assignment.this.instructorName;
+            this.maxMarks= Assignment.this.maxMarks;
         }
         public void setCompletionStatus(){
             this.completionStatus= true;
@@ -45,12 +49,20 @@ public class Assignment {
             return marksReceived;
         }
 
+        public void setMarksReceived(int marks){
+            this.marksReceived= marks;
+        }
+
         public String getSubmitFileName() {
             return submitFileName;
         }
 
         public void setQuizAns(String quizAns) {
             this.quizAns = quizAns;
+        }
+
+        public String getQuizAns() {
+            return quizAns;
         }
 
         public void setSubmitFileName(String submitFileName) {
@@ -63,6 +75,15 @@ public class Assignment {
 
         public void setHasBeenGraded(boolean hasBeenGraded) {
             this.hasBeenGraded = hasBeenGraded;
+        }
+
+
+        public String getInstructorName() {
+            return instructorName;
+        }
+
+        public int getMaxMarks() {
+            return maxMarks;
         }
     }
 
