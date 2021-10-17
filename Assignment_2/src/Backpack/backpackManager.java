@@ -11,7 +11,7 @@ public class backpackManager {
     private final ArrayList<Discussion> discussionArrayList;
     private final ArrayList<Assignment> assignmentArrayList;
 
-    backpackManager(){
+    backpackManager() {
         this.studentArrayList = new ArrayList<>();
         this.instructorArrayList = new ArrayList<>();
         this.materialArrayList = new ArrayList<>();
@@ -20,53 +20,72 @@ public class backpackManager {
     }
 
 
-
     // Methods related to Student are here
-    void addStudent(String name , String ID){
-        studentArrayList.add(new Student(name,ID));
+    void addStudent(String name, String ID) {
+        studentArrayList.add(new Student(name, ID));
     }
 
 
-
     // Methods Related to Instructor are here.
-    void addInstructor(String name, String ID){
-        instructorArrayList.add(new Instructor(name,ID));
+    void addInstructor(String name, String ID) {
+        instructorArrayList.add(new Instructor(name, ID));
     }
 
 
     // Methods related to Material are here.
-    void addMaterialSlides(String slideTopic , int numberOfSlides , Instructor i){
-        materialArrayList.add(new Material(slideTopic,numberOfSlides,i.getName()));
-    }
-    void addMaterialVideo(String videoTopic , String videoFile){
-        materialArrayList.add(new Material(videoTopic,videoFile));
+    void addMaterialSlides(String slideTopic, int numberOfSlides, Instructor i) {
+        materialArrayList.add(new Material(slideTopic, numberOfSlides, i.getName()));
     }
 
-    void viewMaterial(){
+    void addMaterialVideo(String videoTopic, String videoFile) {
+        materialArrayList.add(new Material(videoTopic, videoFile));
+    }
+
+    void viewMaterial() {
         int counter = 1;
-        for (Material m : materialArrayList){
-            System.out.println("Material "+counter);
+        for (Material m : materialArrayList) {
+            System.out.println("Material " + counter);
             m.viewLectureMaterialTopic();
             counter++;
         }
         System.out.println("Choose material you want to view");
         int chosen = scn.nextInt();
-        materialArrayList.get(counter-1).viewLectureMaterial();
+        materialArrayList.get(counter - 1).viewLectureMaterial();
     }
 
     // Methods Related to Discussion Forum are here.
-    void addComment(String name , String comment){
-        discussionArrayList.add(new Discussion(name,comment));
+    void addComment(String name, String comment) {
+        discussionArrayList.add(new Discussion(name, comment));
     }
-    void viewComments(){
-        for (Discussion d : discussionArrayList){
+
+    void viewComments() {
+        for (Discussion d : discussionArrayList) {
             d.displayComment();
         }
     }
 
+    // Methods related to Assignments are here.
+    void addAssignment(String problem, int maxMarks) {
+        assignmentArrayList.add(new Assignment(problem, maxMarks, studentArrayList));
+    }
 
+    void addQuiz(String problem) {
+        assignmentArrayList.add(new Assignment(problem, studentArrayList));
+    }
 
+    void viewPendingAssignment(String studentName) {
+        int counter = 1;
+        for (Assignment a : assignmentArrayList) {
+            for (Assignment.studentForAssignment s : a.getStudentListForAssignment()) {
+                if ((s.getStudentName().equals(studentName)) && !s.getCompletionStatus()) {
+                    a.viewAssignment(counter);
+                    counter++;
 
+                }
+            }
+
+        }
+    }
 
 
     // getter methods are here for encapsulation

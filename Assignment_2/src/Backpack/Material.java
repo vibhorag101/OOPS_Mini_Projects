@@ -63,32 +63,4 @@ public class Material {
     public static String getTime() {
         return new java.text.SimpleDateFormat("MM/dd/yyyy h:mm:ss a").format(new Date());
     }
-
-    public String getSlideTopic() {
-        return slideTopic;
-    }
-
-    public String getMaterialType() {
-        return materialType;
-    }
-
-    public int getNumberOfSlides() {
-        return numberOfSlides;
-    }
-
-    public String getVideoTopic() {
-        return videoTopic;
-    }
-
-    public String getVideoFileName() {
-        return videoFileName;
-    }
-
-    public String getMaterialTime() {
-        return materialTime;
-    }
-
-    public ArrayList<String> getSlideContent() {
-        return slideContent;
-    }
 }

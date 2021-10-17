@@ -10,15 +10,30 @@ public class Assignment {
     private String assignOpenStatus;
     private ArrayList<studentForAssignment> studentListForAssignment;
 
-    private class studentForAssignment extends Student {
-        String completionStatus;
-        int marksReceived = -1;
-
+    public ArrayList<studentForAssignment> getStudentListForAssignment(){
+        return studentListForAssignment;
+    }
+    class studentForAssignment extends Student {
+        private boolean completionStatus;
+        private int marksReceived;
+        private String submitFileName;
         studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
-            completionStatus = "False";
+            completionStatus = false;
+            this.marksReceived= -1;
         }
 
+        public boolean getCompletionStatus() {
+            return completionStatus;
+        }
+
+        public int getMarksReceived() {
+            return marksReceived;
+        }
+
+        public String getSubmitFileName() {
+            return submitFileName;
+        }
     }
 
 
@@ -41,6 +56,14 @@ public class Assignment {
     private void addStudentsToList(ArrayList<Student> studentList) {
         for (Student s : studentList) {
             studentListForAssignment.add(new studentForAssignment(s.getStudentName(), s.getStudentID()));
+        }
+    }
+    public void viewAssignment(int counter){
+        if (problemType.equals("assignment")){
+            System.out.println("ID "+counter+" Assignment : "+assignProblemStatement+" Max Marks "+maxMarks);
+        }
+        else{
+            System.out.println("ID "+counter+" Question : "+quizProblemStatement);
         }
     }
 
