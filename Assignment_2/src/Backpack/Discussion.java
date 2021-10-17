@@ -5,11 +5,11 @@ import java.util.Date;
 public class Discussion {
     private final String commenterName;
     private final String addedComment;
-    private final String commentDate;
+    private final String commentTime;
     Discussion(String commenterName, String addedComment){
         this.commenterName = commenterName;
         this.addedComment = addedComment;
-        this.commentDate= getTime();
+        this.commentTime = getTime();
     }
 
     // function to get the time of comment
@@ -19,6 +19,6 @@ public class Discussion {
 
     void displayComment(){
         System.out.println(addedComment+" ---- "+commenterName);
-        System.out.println(commentDate);
+        System.out.println(commentTime);
     }
 }

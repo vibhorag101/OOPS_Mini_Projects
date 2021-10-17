@@ -8,20 +8,22 @@ public class Assignment {
     private String quizProblemStatement;
     private int maxMarks;
     private String assignOpenStatus;
+    private ArrayList<studentForAssignment> studentListForAssignment;
 
-    private class studentAssign extends Student {
+    private class studentForAssignment extends Student {
         String completionStatus;
         int marksReceived = -1;
-        studentAssign(String studentName, String studentID) {
+
+        studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
             completionStatus = "False";
         }
 
     }
 
-    private ArrayList<studentAssign> studentListForAssignment;
+
     // constructor for Assignment Type Problem
-    Assignment(String assignProblemStatement, int maxMarks , ArrayList<Student> studentList) {
+    Assignment(String assignProblemStatement, int maxMarks, ArrayList<Student> studentList) {
         this.assignProblemStatement = assignProblemStatement;
         this.maxMarks = maxMarks;
         this.problemType = "assignment";
@@ -36,9 +38,9 @@ public class Assignment {
         addStudentsToList(studentList);
     }
 
-    private void addStudentsToList(ArrayList<Student> studentList){
-        for (Student s : studentList){
-            studentListForAssignment.add(new studentAssign(s.getStudentName(),s.getStudentID()));
+    private void addStudentsToList(ArrayList<Student> studentList) {
+        for (Student s : studentList) {
+            studentListForAssignment.add(new studentForAssignment(s.getStudentName(), s.getStudentID()));
         }
     }
 
