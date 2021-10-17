@@ -65,26 +65,50 @@ public class backpackManager {
     }
 
     // Methods related to Assignments are here.
-    void addAssignment(String problem, int maxMarks) {
-        assignmentArrayList.add(new Assignment(problem, maxMarks, studentArrayList));
+    void addAssignment(String problem, int maxMarks,String instructorName) {
+        assignmentArrayList.add(new Assignment(problem, maxMarks,instructorName ,studentArrayList));
     }
 
-    void addQuiz(String problem) {
-        assignmentArrayList.add(new Assignment(problem, studentArrayList));
+    void addQuiz(String problem,String instructorName) {
+        assignmentArrayList.add(new Assignment(problem,instructorName, studentArrayList));
     }
 
-    void viewPendingAssignment(String studentName) {
+    void viewAssignmentInstructor(String instructorName){
         int counter = 1;
+        boolean notFoundFlag = true;
+        for (Assignment a : assignmentArrayList) {
+            if (instructorName.equals(a.getInstructorName())){
+                a.viewAssignmentInstructor(counter);
+                counter++;
+                notFoundFlag= false;
+            }
+        }
+        if (notFoundFlag){
+            System.out.println("You have given no assignment");
+        }
+    }
+
+    void viewPendingAssignmentStudent(String studentName) {
+        int counter = 1;
+        boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
             for (Assignment.studentForAssignment s : a.getStudentListForAssignment()) {
-                if ((s.getStudentName().equals(studentName)) && !s.getCompletionStatus()) {
+                if ((s.getStudentName().equals(studentName)) && !s.getCompletionStatus() && a.getAssignOpenStatus()) {
                     a.viewAssignment(counter);
                     counter++;
+                    notFoundFlag= false;
 
                 }
             }
 
         }
+        if (notFoundFlag){
+            System.out.println("You have no pending assignments");
+        }
+    }
+
+    void submitPendingAssignment(String studentName){
+
     }
 
 
