@@ -110,7 +110,6 @@ public class Menu {
                     scn.nextLine();
                     if (chosenMaterial == 1) {
                         System.out.println("Add slide topic");
-                        scn.nextLine();
                         String slideTopic = scn.nextLine();
                         System.out.println("Enter number of slides");
                         int numSlides = scn.nextInt();
@@ -118,7 +117,6 @@ public class Menu {
                         bM.addMaterialSlides(slideTopic, numSlides, chosenInstructor);
                     } else {
                         System.out.println("Add video topic");
-                        scn.nextLine();
                         String videoName = scn.nextLine();
                         System.out.println("Enter the video file name");
                         String videoFileName = scn.nextLine();

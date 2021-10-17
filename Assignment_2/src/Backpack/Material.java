@@ -48,6 +48,7 @@ public class Material {
             for (String s : slideContent) {
                 System.out.println("Slide " + counter);
                 System.out.println(s);
+                counter++;
             }
         } else {
             System.out.println("Lecture Video By -> " + instructor);

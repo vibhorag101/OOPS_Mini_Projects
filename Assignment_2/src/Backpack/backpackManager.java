@@ -223,7 +223,11 @@ public class backpackManager {
                     System.out.println("Submitted assignment " + chosenStudent.getSubmitFileName());
                     System.out.println("Enter the marks you want to give");
                     int marksGiven = scn.nextInt();
-                    chosenStudent.setMarksReceived(marksGiven);
+                    if (marksGiven > chosenAssignment.getMaxMarks()) {
+                        System.out.println("Kindly enter valid marks");
+                    } else {
+                        chosenStudent.setMarksReceived(marksGiven);
+                    }
                 } else {
                     System.out.println("Submitted Ans " + chosenStudent.getQuizAns());
                     System.out.println("true for correct ans and false otherwise");
