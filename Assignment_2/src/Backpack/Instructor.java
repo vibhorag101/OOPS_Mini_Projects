@@ -9,7 +9,7 @@ public class Instructor {
         this.ID = ID;
     }
 
-    public String getName() {
+    public String getInstructorName() {
         return name;
     }
 

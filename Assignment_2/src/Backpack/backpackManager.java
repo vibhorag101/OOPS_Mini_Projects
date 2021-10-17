@@ -24,6 +24,19 @@ public class backpackManager {
     void addStudent(String name, String ID) {
         studentArrayList.add(new Student(name, ID));
     }
+    void displayStudentList(){
+        int counter =0;
+        for (Student s: studentArrayList){
+            System.out.println("Student "+counter+" --> "+s.getStudentName());
+        }
+    }
+
+    void displayInstructorList(){
+        int counter =0;
+        for (Instructor s: instructorArrayList){
+            System.out.println("Instructor "+counter+" --> "+s.getInstructorName());
+        }
+    }
 
 
     // Methods Related to Instructor are here.
@@ -34,7 +47,7 @@ public class backpackManager {
 
     // Methods related to Material are here.
     void addMaterialSlides(String slideTopic, int numberOfSlides, Instructor i) {
-        materialArrayList.add(new Material(slideTopic, numberOfSlides, i.getName()));
+        materialArrayList.add(new Material(slideTopic, numberOfSlides, i.getInstructorName()));
     }
 
     void addMaterialVideo(String videoTopic, String videoFile) {
