@@ -29,6 +29,7 @@ public class Assignment {
         private int maxMarks;
         private String assignType;
         private String quizQuestion;
+        private String gradingInstructor;
 
         studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
@@ -97,6 +98,14 @@ public class Assignment {
 
         public String getQuizQuestion() {
             return quizQuestion;
+        }
+
+        public String getGradingInstructor() {
+            return gradingInstructor;
+        }
+
+        public void setGradingInstructor(String gradingInstructor) {
+            this.gradingInstructor = gradingInstructor;
         }
     }
 

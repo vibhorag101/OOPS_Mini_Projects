@@ -196,10 +196,8 @@ public class backpackManager {
         int counter = 0;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
-            if (instructorName.equals(a.getInstructorName())) {
-                a.viewAssignmentInstructor(counter);
-                notFoundFlag = false;
-            }
+            a.viewAssignmentInstructor(counter);
+            notFoundFlag = false;
             counter++;
         }
         if (notFoundFlag) {
@@ -225,6 +223,7 @@ public class backpackManager {
                 Assignment.studentForAssignment chosenStudent = chosenAssignment.getStudentListForAssignment().get(chosenStudentOption);
                 String assignmentType = chosenAssignment.getProblemType();
                 chosenStudent.setHasBeenGraded(true);
+                chosenStudent.setGradingInstructor(instructorName);
                 if (assignmentType.equals("assignment")) {
                     System.out.println("Max marks are " + chosenAssignment.getMaxMarks());
                     System.out.println("Submitted assignment " + chosenStudent.getSubmitFileName());
@@ -292,11 +291,11 @@ public class backpackManager {
             if (assignType.equals("assignment")) {
                 System.out.println("Submission file name ---> " + s.getSubmitFileName());
                 System.out.println("You have been given " + s.getMarksReceived() + " Marks out of " + s.getMaxMarks() + " Marks");
-                System.out.println("Graded By --> " + s.getInstructorName());
+                System.out.println("Graded By --> " + s.getGradingInstructor());
             } else {
                 System.out.println("quiz --> " + s.getQuizQuestion());
                 System.out.println("You have been given " + s.getMarksReceived() + " Mark out of 1 Mark");
-                System.out.println("Graded By --> " + s.getInstructorName());
+                System.out.println("Graded By --> " + s.getGradingInstructor());
 
             }
         }
