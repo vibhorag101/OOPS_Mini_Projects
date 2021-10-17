@@ -21,18 +21,25 @@ public class Assignment {
 
     class studentForAssignment extends Student {
         private boolean completionStatus;
+        private boolean hasBeenGraded;
         private int marksReceived;
         private String submitFileName;
+        private String quizAns;
 
         studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
             completionStatus = false;
             this.marksReceived = -1;
+            hasBeenGraded = false;
         }
-
+        public void setCompletionStatus(){
+            this.completionStatus= true;
+        }
         public boolean getCompletionStatus() {
             return completionStatus;
         }
+
+
 
         public int getMarksReceived() {
             return marksReceived;
@@ -40,6 +47,22 @@ public class Assignment {
 
         public String getSubmitFileName() {
             return submitFileName;
+        }
+
+        public void setQuizAns(String quizAns) {
+            this.quizAns = quizAns;
+        }
+
+        public void setSubmitFileName(String submitFileName) {
+            this.submitFileName = submitFileName;
+        }
+
+        public boolean isHasBeenGraded() {
+            return hasBeenGraded;
+        }
+
+        public void setHasBeenGraded(boolean hasBeenGraded) {
+            this.hasBeenGraded = hasBeenGraded;
         }
     }
 
@@ -106,6 +129,9 @@ public class Assignment {
 
     public boolean getAssignOpenStatus() {
         return assignOpenStatus;
+    }
+    public void setAssignOpenStatus(Boolean b){
+        this.assignOpenStatus = b;
     }
 
 }

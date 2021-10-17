@@ -38,6 +38,11 @@ public class backpackManager {
     }
 
     void addMaterialVideo(String videoTopic, String videoFile) {
+        String fileExt = videoFile.substring(videoFile.length() - 4, videoFile.length() - 1);
+        if (!fileExt.equals(".mp4")) {
+            System.out.println("Please enter a valid file and try again");
+            return;
+        }
         materialArrayList.add(new Material(videoTopic, videoFile));
     }
 
@@ -65,25 +70,25 @@ public class backpackManager {
     }
 
     // Methods related to Assignments are here.
-    void addAssignment(String problem, int maxMarks,String instructorName) {
-        assignmentArrayList.add(new Assignment(problem, maxMarks,instructorName ,studentArrayList));
+    void addAssignment(String problem, int maxMarks, String instructorName) {
+        assignmentArrayList.add(new Assignment(problem, maxMarks, instructorName, studentArrayList));
     }
 
-    void addQuiz(String problem,String instructorName) {
-        assignmentArrayList.add(new Assignment(problem,instructorName, studentArrayList));
+    void addQuiz(String problem, String instructorName) {
+        assignmentArrayList.add(new Assignment(problem, instructorName, studentArrayList));
     }
 
-    void viewAssignmentInstructor(String instructorName){
+    void viewAssignmentInstructor(String instructorName) {
         int counter = 1;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
-            if (instructorName.equals(a.getInstructorName())){
+            if (instructorName.equals(a.getInstructorName())) {
                 a.viewAssignmentInstructor(counter);
                 counter++;
-                notFoundFlag= false;
+                notFoundFlag = false;
             }
         }
-        if (notFoundFlag){
+        if (notFoundFlag) {
             System.out.println("You have given no assignment");
         }
     }
@@ -96,20 +101,100 @@ public class backpackManager {
                 if ((s.getStudentName().equals(studentName)) && !s.getCompletionStatus() && a.getAssignOpenStatus()) {
                     a.viewAssignment(counter);
                     counter++;
-                    notFoundFlag= false;
+                    notFoundFlag = false;
 
                 }
             }
 
         }
-        if (notFoundFlag){
+        if (notFoundFlag) {
             System.out.println("You have no pending assignments");
         }
     }
 
-    void submitPendingAssignment(String studentName){
+    void submitPendingAssignment(String studentName) {
+        int counter = 0;
+        boolean notFoundFlag = true;
+        for (Assignment a : assignmentArrayList) {
+            for (Assignment.studentForAssignment s : a.getStudentListForAssignment()) {
+                if ((s.getStudentName().equals(studentName)) && !s.getCompletionStatus() && a.getAssignOpenStatus()) {
+                    a.viewAssignment(counter);
+                    notFoundFlag = false;
+
+                }
+            }
+            counter++;
+        }
+        if (notFoundFlag) {
+            System.out.println("You have no pending assignments");
+        } else {
+            System.out.println("Choose option to submit assignment");
+            int chosenOption = scn.nextInt();
+            Assignment chosenAssignment = assignmentArrayList.get(chosenOption);
+            for (Assignment.studentForAssignment s : chosenAssignment.getStudentListForAssignment()) {
+                if ((s.getStudentName().equals(studentName))) {
+                    if (chosenAssignment.getProblemType().equals("quiz")) {
+                        System.out.println("Enter your response to quiz");
+                        String quizAns = scn.next();
+                        s.setQuizAns(quizAns);
+                        s.setCompletionStatus();
+                    } else {
+                        System.out.println("Enter the filename to submit assignment");
+                        String fileName = scn.next();
+                        String fileExt = fileName.substring(fileName.length() - 4, fileName.length() - 1);
+                        if (!fileExt.equals(".zip")) {
+                            System.out.println("Please enter a valid file and try again");
+                            return;
+                        } else {
+                            s.setSubmitFileName(fileName);
+                            s.setCompletionStatus();
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    public void gradeAssignment(String instructorName){
+        int counter = 0;
+        boolean notFoundFlag = true;
+        for (Assignment a : assignmentArrayList) {
+            if (instructorName.equals(a.getInstructorName()) && a.getAssignOpenStatus()) {
+                a.viewAssignmentInstructor(counter);
+                notFoundFlag = false;
+            }
+            counter++;
+        }
+        if (notFoundFlag) {
+            System.out.println("You have no assignment to grade");
+        } else {
+            System.out.println("Select the assignment to close");
+            int chosenOption = scn.nextInt();
+            assignmentArrayList.get(chosenOption).setAssignOpenStatus(false);
+        }
 
     }
+
+    public void closeAssignment(String instructorName) {
+        int counter = 0;
+        boolean notFoundFlag = true;
+        for (Assignment a : assignmentArrayList) {
+            if (instructorName.equals(a.getInstructorName()) && a.getAssignOpenStatus()) {
+                a.viewAssignmentInstructor(counter);
+                notFoundFlag = false;
+            }
+            counter++;
+        }
+        if (notFoundFlag) {
+            System.out.println("You have no open assignment to close");
+        } else {
+            System.out.println("Select the assignment to close");
+            int chosenOption = scn.nextInt();
+            assignmentArrayList.get(chosenOption).setAssignOpenStatus(false);
+        }
+    }
+
 
 
     // getter methods are here for encapsulation
