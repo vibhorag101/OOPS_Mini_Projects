@@ -24,17 +24,20 @@ public class backpackManager {
     void addStudent(String name, String ID) {
         studentArrayList.add(new Student(name, ID));
     }
-    void displayStudentList(){
-        int counter =0;
-        for (Student s: studentArrayList){
-            System.out.println("Student "+counter+" --> "+s.getStudentName());
+
+    void displayStudentList() {
+        int counter = 0;
+        for (Student s : studentArrayList) {
+            System.out.println("Student " + counter + " --> " + s.getStudentName());
+            counter++;
         }
     }
 
-    void displayInstructorList(){
-        int counter =0;
-        for (Instructor s: instructorArrayList){
-            System.out.println("Instructor "+counter+" --> "+s.getInstructorName());
+    void displayInstructorList() {
+        int counter = 0;
+        for (Instructor s : instructorArrayList) {
+            System.out.println("Instructor " + counter + " --> " + s.getInstructorName());
+            counter++;
         }
     }
 
@@ -50,13 +53,13 @@ public class backpackManager {
         materialArrayList.add(new Material(slideTopic, numberOfSlides, i.getInstructorName()));
     }
 
-    void addMaterialVideo(String videoTopic, String videoFile) {
-        String fileExt = videoFile.substring(videoFile.length() - 4, videoFile.length() - 1);
+    void addMaterialVideo(String videoTopic, String videoFile, Instructor i) {
+        String fileExt = videoFile.substring(videoFile.length() - 4, videoFile.length());
         if (!fileExt.equals(".mp4")) {
             System.out.println("Please enter a valid file and try again");
             return;
         }
-        materialArrayList.add(new Material(videoTopic, videoFile));
+        materialArrayList.add(new Material(videoTopic, videoFile, i.getInstructorName()));
     }
 
     void viewMaterial() {
@@ -68,7 +71,27 @@ public class backpackManager {
         }
         System.out.println("Choose material you want to view");
         int chosen = scn.nextInt();
-        materialArrayList.get(counter - 1).viewLectureMaterial();
+        materialArrayList.get(chosen - 1).viewLectureMaterial();
+    }
+
+    void viewMaterialByInstructor(String instructorName) {
+        int counter = 1;
+        boolean notFoundFlag = true;
+        for (Material m : materialArrayList) {
+            if (m.getInstructorName().equals(instructorName)) {
+                System.out.println("Material " + counter);
+                m.viewLectureMaterialTopic();
+                counter++;
+                notFoundFlag = false;
+            }
+        }
+        if (notFoundFlag) {
+            System.out.println("You have not added any material");
+        } else {
+            System.out.println("Choose material you want to view");
+            int chosen = scn.nextInt();
+            materialArrayList.get(chosen - 1).viewLectureMaterial();
+        }
     }
 
     // Methods Related to Discussion Forum are here.
@@ -154,7 +177,7 @@ public class backpackManager {
                     } else {
                         System.out.println("Enter the filename to submit assignment");
                         String fileName = scn.next();
-                        String fileExt = fileName.substring(fileName.length() - 4, fileName.length() - 1);
+                        String fileExt = fileName.substring(fileName.length() - 4, fileName.length());
                         if (!fileExt.equals(".zip")) {
                             System.out.println("Please enter a valid file and try again");
                             return;
@@ -173,7 +196,7 @@ public class backpackManager {
         int counter = 0;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
-            if (instructorName.equals(a.getInstructorName()) && a.getAssignOpenStatus()) {
+            if (instructorName.equals(a.getInstructorName())) {
                 a.viewAssignmentInstructor(counter);
                 notFoundFlag = false;
             }
@@ -201,6 +224,7 @@ public class backpackManager {
                 int chosenStudentOption = scn.nextInt();
                 Assignment.studentForAssignment chosenStudent = chosenAssignment.getStudentListForAssignment().get(chosenStudentOption);
                 String assignmentType = chosenAssignment.getProblemType();
+                chosenStudent.setHasBeenGraded(true);
                 if (assignmentType.equals("assignment")) {
                     System.out.println("Max marks are " + chosenAssignment.getMaxMarks());
                     System.out.println("Submitted assignment " + chosenStudent.getSubmitFileName());
@@ -237,19 +261,43 @@ public class backpackManager {
             System.out.println("All your submissions have been graded");
         } else if (ungradedList.size() == 0) {
             System.out.println("There are no Ungraded Submissions");
-            System.out.println("Graded Submissions");
-            for (Assignment.studentForAssignment s : gradedList) {
-                System.out.println("Submission file name ---> " + s.getSubmitFileName());
-                System.out.println("You have been given " + s.getMarksReceived() + " Marks out of " + s.getMaxMarks() + " Marks");
-                System.out.println("Graded By --> " + s.getInstructorName());
-            }
-        } else {
+            gradedAssignment(gradedList);
+        } else if (gradedList.size() == 0) {
             System.out.println("There are no Graded Submissions");
-            System.out.println("Ungraded Submissions");
-            for (Assignment.studentForAssignment s : ungradedList) {
+            ungradedAssignment(ungradedList);
+        } else {
+            gradedAssignment(gradedList);
+            ungradedAssignment(ungradedList);
+        }
+    }
+
+    private void ungradedAssignment(ArrayList<Assignment.studentForAssignment> ungradedList) {
+        System.out.println("Ungraded Submissions");
+        for (Assignment.studentForAssignment s : ungradedList) {
+            String assignType = s.getAssignType();
+            if (assignType.equals("assignment")) {
+                System.out.println("Submission file name ---> " + s.getSubmitFileName());
+                System.out.println("Not yet Graded");
+            } else {
+                System.out.println("quiz " + s.getQuizQuestion());
+                System.out.println("Not yet graded");
+            }
+        }
+    }
+
+    private void gradedAssignment(ArrayList<Assignment.studentForAssignment> gradedList) {
+        System.out.println("Graded Submissions");
+        for (Assignment.studentForAssignment s : gradedList) {
+            String assignType = s.getAssignType();
+            if (assignType.equals("assignment")) {
                 System.out.println("Submission file name ---> " + s.getSubmitFileName());
                 System.out.println("You have been given " + s.getMarksReceived() + " Marks out of " + s.getMaxMarks() + " Marks");
                 System.out.println("Graded By --> " + s.getInstructorName());
+            } else {
+                System.out.println("quiz --> " + s.getQuizQuestion());
+                System.out.println("You have been given " + s.getMarksReceived() + " Mark out of 1 Mark");
+                System.out.println("Graded By --> " + s.getInstructorName());
+
             }
         }
     }

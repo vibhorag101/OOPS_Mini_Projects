@@ -15,6 +15,7 @@ public class Material {
     private String materialTime;
     private String instructor;
 
+    // constructor for Material Slides
     Material(String slideTopic, int numberOfSlides, String instructor) {
         this.slideTopic = slideTopic;
         this.numberOfSlides = numberOfSlides;
@@ -29,9 +30,12 @@ public class Material {
         }
     }
 
-    Material(String videoTopic, String videoFileName) {
+    // Constructor for lecture video
+    Material(String videoTopic, String videoFileName, String instructor) {
         this.videoTopic = videoTopic;
         this.videoFileName = videoFileName;
+        this.instructor = instructor;
+        this.materialType = "video";
     }
 
     void viewLectureMaterial() {
@@ -58,6 +62,10 @@ public class Material {
             System.out.println("Lecture Video By -> " + instructor);
             System.out.println("Lecture Video Topic -> " + videoTopic);
         }
+    }
+
+    public String getInstructorName() {
+        return instructor;
     }
 
     public static String getTime() {

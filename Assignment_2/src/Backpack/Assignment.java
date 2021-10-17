@@ -27,6 +27,8 @@ public class Assignment {
         private String quizAns;
         private String instructorName;
         private int maxMarks;
+        private String assignType;
+        private String quizQuestion;
 
         studentForAssignment(String studentName, String studentID) {
             super(studentName, studentID);
@@ -34,23 +36,26 @@ public class Assignment {
             this.marksReceived = 0;
             hasBeenGraded = false;
             this.instructorName = Assignment.this.instructorName;
-            this.maxMarks= Assignment.this.maxMarks;
+            this.maxMarks = Assignment.this.maxMarks;
+            this.assignType = problemType;
+            this.quizQuestion = quizProblemStatement;
         }
-        public void setCompletionStatus(){
-            this.completionStatus= true;
+
+        public void setCompletionStatus() {
+            this.completionStatus = true;
         }
+
         public boolean getCompletionStatus() {
             return completionStatus;
         }
-
 
 
         public int getMarksReceived() {
             return marksReceived;
         }
 
-        public void setMarksReceived(int marks){
-            this.marksReceived= marks;
+        public void setMarksReceived(int marks) {
+            this.marksReceived = marks;
         }
 
         public String getSubmitFileName() {
@@ -85,6 +90,14 @@ public class Assignment {
         public int getMaxMarks() {
             return maxMarks;
         }
+
+        public String getAssignType() {
+            return assignType;
+        }
+
+        public String getQuizQuestion() {
+            return quizQuestion;
+        }
     }
 
 
@@ -95,14 +108,18 @@ public class Assignment {
         this.problemType = "assignment";
         this.assignOpenStatus = true;
         this.instructorName = instructorName;
+        this.studentListForAssignment = new ArrayList<>();
         addStudentsToList(studentList);
+
     }
 
     // constructor for Quiz Type Problem
     Assignment(String quizProblemStatement, String instructorName, ArrayList<Student> studentList) {
         this.quizProblemStatement = quizProblemStatement;
+        this.assignOpenStatus = true;
         this.problemType = "quiz";
         this.instructorName = instructorName;
+        this.studentListForAssignment = new ArrayList<>();
         addStudentsToList(studentList);
     }
 
@@ -122,7 +139,7 @@ public class Assignment {
 
     public void viewAssignmentInstructor(int counter) {
         if (problemType.equals("assignment")) {
-            System.out.println("ID " + counter + " Assignment : " + assignProblemStatement + " Max Marks " + maxMarks + " Open Status " + getAssignOpenStatus());
+            System.out.println("ID : " + counter + " | Assignment : " + assignProblemStatement + " Max Marks " + maxMarks + " Open Status ---> " + getAssignOpenStatus());
         } else {
             System.out.println("ID " + counter + " Question : " + quizProblemStatement + " Open Status " + getAssignOpenStatus());
         }
@@ -151,7 +168,8 @@ public class Assignment {
     public boolean getAssignOpenStatus() {
         return assignOpenStatus;
     }
-    public void setAssignOpenStatus(Boolean b){
+
+    public void setAssignOpenStatus(Boolean b) {
         this.assignOpenStatus = b;
     }
 
