@@ -2,7 +2,7 @@ package Backpack;
 
 import java.util.ArrayList;
 
-public class Assignment {
+public class Assignment implements assignmentInterface {
     private String problemType;
     private String assignProblemStatement;
     private String quizProblemStatement;

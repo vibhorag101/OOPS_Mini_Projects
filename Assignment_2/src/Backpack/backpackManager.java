@@ -3,7 +3,7 @@ package Backpack;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class backpackManager {
+public class backpackManager implements managerInterface {
     Scanner scn = new Scanner(System.in);
     private final ArrayList<Student> studentArrayList;
     private final ArrayList<Instructor> instructorArrayList;
@@ -21,11 +21,11 @@ public class backpackManager {
 
 
     // Methods related to Student are here
-    void addStudent(String name, String ID) {
+    public void addStudent(String name, String ID) {
         studentArrayList.add(new Student(name, ID));
     }
 
-    void displayStudentList() {
+    public void displayStudentList() {
         int counter = 0;
         for (Student s : studentArrayList) {
             System.out.println("Student " + counter + " --> " + s.getStudentName());
@@ -33,7 +33,7 @@ public class backpackManager {
         }
     }
 
-    void displayInstructorList() {
+    public void displayInstructorList() {
         int counter = 0;
         for (Instructor s : instructorArrayList) {
             System.out.println("Instructor " + counter + " --> " + s.getInstructorName());
@@ -43,17 +43,17 @@ public class backpackManager {
 
 
     // Methods Related to Instructor are here.
-    void addInstructor(String name, String ID) {
+    public void addInstructor(String name, String ID) {
         instructorArrayList.add(new Instructor(name, ID));
     }
 
 
     // Methods related to Material are here.
-    void addMaterialSlides(String slideTopic, int numberOfSlides, Instructor i) {
+    public void addMaterialSlides(String slideTopic, int numberOfSlides, Instructor i) {
         materialArrayList.add(new Material(slideTopic, numberOfSlides, i.getInstructorName()));
     }
 
-    void addMaterialVideo(String videoTopic, String videoFile, Instructor i) {
+    public void addMaterialVideo(String videoTopic, String videoFile, Instructor i) {
         String fileExt = videoFile.substring(videoFile.length() - 4, videoFile.length());
         if (!fileExt.equals(".mp4")) {
             System.out.println("Please enter a valid file and try again");
@@ -62,7 +62,7 @@ public class backpackManager {
         materialArrayList.add(new Material(videoTopic, videoFile, i.getInstructorName()));
     }
 
-    void viewMaterial() {
+    public void viewMaterial() {
         int counter = 1;
         for (Material m : materialArrayList) {
             System.out.println("Material " + counter);
@@ -71,7 +71,7 @@ public class backpackManager {
         }
     }
 
-    void viewMaterialByInstructor(String instructorName) {
+    public void viewMaterialByInstructor(String instructorName) {
         int counter = 1;
         boolean notFoundFlag = true;
         for (Material m : materialArrayList) {
@@ -88,26 +88,26 @@ public class backpackManager {
     }
 
     // Methods Related to Discussion Forum are here.
-    void addComment(String name, String comment) {
+    public void addComment(String name, String comment) {
         discussionArrayList.add(new Discussion(name, comment));
     }
 
-    void viewComments() {
+    public void viewComments() {
         for (Discussion d : discussionArrayList) {
             d.displayComment();
         }
     }
 
     // Methods related to Assignments are here.
-    void addAssignment(String problem, int maxMarks, String instructorName) {
+    public void addAssignment(String problem, int maxMarks, String instructorName) {
         assignmentArrayList.add(new Assignment(problem, maxMarks, instructorName, studentArrayList));
     }
 
-    void addQuiz(String problem, String instructorName) {
+    public void addQuiz(String problem, String instructorName) {
         assignmentArrayList.add(new Assignment(problem, instructorName, studentArrayList));
     }
 
-    void viewAssignmentInstructor(String instructorName) {
+    public void viewAssignmentInstructor(String instructorName) {
         int counter = 1;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
@@ -122,7 +122,7 @@ public class backpackManager {
         }
     }
 
-    void viewPendingAssignmentStudent(String studentName) {
+    public void viewPendingAssignmentStudent(String studentName) {
         int counter = 1;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
@@ -141,7 +141,7 @@ public class backpackManager {
         }
     }
 
-    void submitPendingAssignment(String studentName) {
+    public void submitPendingAssignment(String studentName) {
         int counter = 0;
         boolean notFoundFlag = true;
         for (Assignment a : assignmentArrayList) {
