@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class matrixManager {
+    public static ArrayList<matrix> matrixArrayList = new ArrayList<>();
+    int counter = 0;
+
+    matrixManager() {
+        this.counter = 0;
+    }
+
     public void addMatrix() {
         Scanner scn = new Scanner(System.in);
         System.out.println("Enter the number of rows of matrix");
@@ -21,10 +28,15 @@ public class matrixManager {
                 matrixElements.get(i).add(temp);
             }
         }
-        String matrixType = findMatrixType(matrixElements);
+        matrix m = new matrix(matrixElements, counter);
+        matrixArrayList.add(m);
+        m.setMatrixType(findMatrixType(matrixElements));
+        counter++;
+
     }
 
-    public String findMatrixType(ArrayList<ArrayList<Integer>> matrixElements) {
+    public ArrayList<String> findMatrixType(ArrayList<ArrayList<Integer>> matrixElements) {
+        ArrayList<String> s = new ArrayList<>();
         int row = matrixElements.size();
         int column = matrixElements.get(0).size();
         boolean allOne = true;
@@ -40,27 +52,25 @@ public class matrixManager {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 int matrixElem = matrixElements.get(i).get(j);
-                if (i==j){
-                    if (matrixElem!=1){
+                if (i == j) {
+                    if (matrixElem != 1) {
                         isIdentity = false;
                     }
-                    if (matrixElem != diagElem){
-                        isScalar= false;
+                    if (matrixElem != diagElem) {
+                        isScalar = false;
                     }
-                }
-                else{
-                    if (matrixElem!=0){
-                        isIdentity= false;
-                        isScalar=false;
+                } else {
+                    if (matrixElem != 0) {
+                        isIdentity = false;
+                        isScalar = false;
                         isDiagonal = false;
                     }
-                    if (i>j){
-                        if (matrixElem !=0){
-                            isUpperTriangle= false;
+                    if (i > j) {
+                        if (matrixElem != 0) {
+                            isUpperTriangle = false;
                         }
-                    }
-                    else{
-                        if (matrixElem !=0){
+                    } else {
+                        if (matrixElem != 0) {
                             isLowerTriangle = false;
                         }
                     }
@@ -70,18 +80,17 @@ public class matrixManager {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j <= i; j++) {
                 int matrixElem = matrixElements.get(i).get(j);
-                if (i==j){
-                    if (matrixElem!= 0){
+                if (i == j) {
+                    if (matrixElem != 0) {
                         isSkewSymmetric = false;
                     }
-                }
-                else{
+                } else {
                     int checkElem = matrixElements.get(j).get(i);
-                    if (checkElem != matrixElem){
+                    if (checkElem != matrixElem) {
                         isSymmetric = false;
                     }
-                    if (checkElem != -1*matrixElem){
-                        isSkewSymmetric=false;
+                    if (checkElem != -1 * matrixElem) {
+                        isSkewSymmetric = false;
                     }
                 }
             }
@@ -98,48 +107,52 @@ public class matrixManager {
         }
         if (row != column) {
             if (allOne) {
-                return ("One Matrix");
-            } else if (allZero) {
-                return ("Null Matrix");
-            } else if (row == 1 && column > row) {
-                return ("Row Matrix");
-            } else if (column == 1 && row > column) {
-                return ("Column Matrix");
-            } else {
-                return ("Rectangular Matrix");
+                s.add("One Matrix");
             }
+            if (allZero) {
+                s.add("Null Matrix");
+            }
+            if (row == 1 && column > row) {
+                s.add("Row Matrix");
+            }
+            if (column == 1 && row > column) {
+                s.add("Column Matrix");
+            }
+            s.add("Rectangular Matrix");
         } else {
             if (row == 1) {
-                return ("Singleton Matrix");
-            } else if (allOne) {
-                return ("One Matrix");
-            } else if (allZero) {
-                return ("Null Matrix");
-            } else if (isIdentity){
-                return("Identity Matrix");
+                s.add("Singleton Matrix");
             }
-            else if(isScalar){
-                return("Scalar Matrix");
+            if (allOne) {
+                s.add("One Matrix");
             }
-            else if (isDiagonal){
-                return ("Diagonal Matrix");
+            if (allZero) {
+                s.add("Null Matrix");
             }
-            else if(isLowerTriangle){
-                return("Lower Triangular Matrix");
+            if (isIdentity) {
+                s.add("Identity Matrix");
             }
-            else if(isUpperTriangle){
-                return ("Upper Triangular Matrix");
+            if (isScalar) {
+                s.add("Scalar Matrix");
             }
-            else if(isSkewSymmetric){
-                return("Skew Symmetric Matrix");
+            if (isDiagonal) {
+                s.add("Diagonal Matrix");
             }
-            else if (isSymmetric){
-                return("Symmetric Matrix");
+            if (isLowerTriangle) {
+                s.add("Lower Triangular Matrix");
             }
-            else{
-                return("Square Matrix");
+            if (isUpperTriangle) {
+                s.add("Upper Triangular Matrix");
             }
+            if (isSkewSymmetric) {
+                s.add("Skew Symmetric Matrix");
+            }
+            if (isSymmetric) {
+                s.add("Symmetric Matrix");
+            }
+            s.add("Square Matrix");
         }
-
+        return s;
     }
+
 }

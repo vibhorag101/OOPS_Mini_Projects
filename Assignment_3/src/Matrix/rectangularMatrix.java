@@ -1,5 +1,7 @@
 package Matrix;
 
-public class rectangularMatrix {
+import static Matrix.matrixManager.matrixArrayList;
 
+public class rectangularMatrix {
+matrix m = matrixArrayList.get(0);
 }
