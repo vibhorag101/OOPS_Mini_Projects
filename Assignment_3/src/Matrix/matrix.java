@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class matrix {
     private final int row;
     private final int column;
-    private ArrayList<String> MatrixType;
+    private ArrayList<String> matrixLabels;
+    private String matrixStoreType;
     private final int id;
     private final ArrayList<ArrayList<Integer>> matrixElements;
 
@@ -34,12 +35,12 @@ public class matrix {
         }
     }
 
-    public ArrayList<String> getMatrixType() {
-        return MatrixType;
+    public ArrayList<String> getMatrixLabels() {
+        return matrixLabels;
     }
 
-    public void setMatrixType(ArrayList<String> matrixType) {
-        MatrixType = matrixType;
+    public void setMatrixLabels(ArrayList<String> matrixLabels) {
+        this.matrixLabels = matrixLabels;
     }
 
     public int getId() {
@@ -51,24 +52,6 @@ public class matrix {
     }
 
     // matrix operations with single operand.
-    public ArrayList<ArrayList<Integer>> transpose() {
-        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
-        for (int i = 0; i < column; i++) {
-            al.add(new ArrayList<Integer>());
-        }
-        for (int i = 0; i < column; i++) {
-            for (int j = 0; j < row; j++) {
-                al.get(i).add(0);
-            }
-        }
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                al.get(j).set(i, matrixElements.get(i).get(j));
-            }
-        }
-        displayMatrixByList(al);
-        return al;
-    }
 
     public int getDeterminants() {
         if (row == 1) {
@@ -92,7 +75,28 @@ public class matrix {
             return (det);
         }
     }
+    public void printDeterminants() {
+        if (row == 1) {
+            System.out.println("The determinant is "+matrixElements.get(0).get(0));
+        } else if (row == 2) {
+            int temp1 = matrixElements.get(0).get(0) * matrixElements.get(1).get(1);
+            int temp2 = matrixElements.get(0).get(1) * matrixElements.get(1).get(0);
+            System.out.println("The determinant is "+(temp1 - temp2));
 
+        } else {
+            int temp00 = matrixElements.get(0).get(0);
+            int temp01 = matrixElements.get(0).get(1);
+            int temp02 = matrixElements.get(0).get(2);
+            int temp10 = matrixElements.get(1).get(0);
+            int temp11 = matrixElements.get(1).get(1);
+            int temp12 = matrixElements.get(1).get(2);
+            int temp20 = matrixElements.get(2).get(0);
+            int temp21 = matrixElements.get(2).get(1);
+            int temp22 = matrixElements.get(2).get(2);
+            int det = temp00 * (temp11 * temp22 - temp12 * temp21) - temp01 * (temp10 * temp22 - temp12 * temp20) + temp02 * (temp10 * temp21 - temp11 * temp20);
+            System.out.println("the determinant of the matrix is " + det);
+        }
+    }
     public void getRowMean() {
         for (int i = 0; i < row; i++) {
             int mean = 0;
@@ -123,11 +127,29 @@ public class matrix {
         mean = mean/(row*column);
         System.out.println("The mean of all the elements is "+mean);
     }
+    public ArrayList<ArrayList<Integer>> transpose() {
+        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+        for (int i = 0; i < column; i++) {
+            al.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < column; i++) {
+            for (int j = 0; j < row; j++) {
+                al.get(i).add(0);
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(j).set(i, matrixElements.get(i).get(j));
+            }
+        }
+        displayMatrixByList(al);
+        return al;
+    }
     public void addTranspose(){
         ArrayList<ArrayList<Integer>> al = transpose();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
-                al.get(row).set(column,al.get(row).get(column)+ matrixElements.get(row).get(column));
+                al.get(i).set(j,al.get(i).get(j)+ matrixElements.get(i).get(j));
             }
         }
         displayMatrixByList(al);
@@ -171,6 +193,13 @@ public class matrix {
                 }
             }
         }
+        else if(flag==2){
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < column; j++) {
+                    firstMat.get(i).set(i, firstMat.get(i).get(j)* secondMat.get(i).get(j));
+                }
+            }
+        }
         else{
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
@@ -180,5 +209,7 @@ public class matrix {
         }
         displayMatrixByList(firstMat);
     }
+
+
 
 }
