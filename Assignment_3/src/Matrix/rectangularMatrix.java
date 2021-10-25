@@ -14,7 +14,7 @@ public class rectangularMatrix extends matrix {
     }
     @Override
     public void addTranspose(){
-        System.out.println("We cannnot add two matrices of different dimensions");
+        System.out.println("We cannot add two matrices of different dimensions");
     }
 
 }

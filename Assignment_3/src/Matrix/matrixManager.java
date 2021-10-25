@@ -233,10 +233,6 @@ public class matrixManager {
                 return ("One Matrix");
             } else if (allZero) {
                 return ("Null Matrix");
-            } else if (row == 1 && column > row) {
-                return ("Row Matrix");
-            } else if (column == 1 && row > column) {
-                return ("Column Matrix");
             } else {
                 return ("Rectangular Matrix");
             }
@@ -250,17 +246,8 @@ public class matrixManager {
             } else if (isIdentity){
                 return("Identity Matrix");
             }
-            else if(isScalar){
-                return("Scalar Matrix");
-            }
             else if (isDiagonal){
                 return ("Diagonal Matrix");
-            }
-            else if(isLowerTriangle){
-                return("Lower Triangular Matrix");
-            }
-            else if(isUpperTriangle){
-                return ("Upper Triangular Matrix");
             }
             else if(isSkewSymmetric){
                 return("Skew Symmetric Matrix");

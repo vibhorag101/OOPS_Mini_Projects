@@ -2,9 +2,14 @@ package Matrix;
 
 import java.util.ArrayList;
 
-public class symmetricMatrix extends matrix{
-    symmetricMatrix(ArrayList<ArrayList<Integer>> matrixElements, int id){
+public class diagonalMatrix extends matrix{
+    private final int matrixSingleElements;
+    private final int size;
+
+    diagonalMatrix(ArrayList<ArrayList<Integer>> matrixElements, int id){
         super(matrixElements,id);
+        this.matrixSingleElements = getMatrixElements().get(0).get(0);
+        this.size = getMatrixElements().size();
     }
     @Override
     public ArrayList<ArrayList<Integer>> transpose() {
@@ -24,4 +29,8 @@ public class symmetricMatrix extends matrix{
         displayMatrixByList(al);
     }
 
+    @Override
+    public void printDeterminants(){
+        System.out.println("The determinant is "+(Math.pow((double) matrixSingleElements,(double) size)));
+    }
 }
