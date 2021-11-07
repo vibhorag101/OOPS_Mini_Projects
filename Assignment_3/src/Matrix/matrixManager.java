@@ -34,7 +34,7 @@ public class matrixManager {
             matrixArrayList.add(new rectangularMatrix(matrixElements, counter));
         }
         else if (matrixTypeStored.equals("Null Matrix")){
-            matrixArrayList.add(new matrix(matrixElements, counter));
+            matrixArrayList.add(new nullMatrix(matrixElements, counter));
         }
         else if (matrixTypeStored.equals("Symmetric Matrix")){
             matrixArrayList.add(new symmetricMatrix(matrixElements, counter));

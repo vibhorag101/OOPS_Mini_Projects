@@ -10,4 +10,9 @@ public class identityMatrix extends diagonalMatrix{
     public void printDeterminants(){
         System.out.println("Determinant is "+1);
     }
+    @Override
+    public void printMatrixInverse(){
+        System.out.println("Inverse is the identity matrix itself");
+        displayMatrix();
+    }
 }
