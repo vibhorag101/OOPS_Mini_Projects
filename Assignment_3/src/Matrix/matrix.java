@@ -17,12 +17,13 @@ public class matrix {
         this.id = id;
     }
 
-    public void printMatrixLabelList(){
+    public void printMatrixLabelList() {
         System.out.println("The types of the matrix are : ");
         for (String matrixLabel : matrixLabels) {
             System.out.println(matrixLabel);
         }
     }
+
     public void displayMatrix() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -157,6 +158,7 @@ public class matrix {
         displayMatrixByList(al);
         return al;
     }
+
     public ArrayList<ArrayList<Integer>> getTranspose(ArrayList<ArrayList<Integer>> matrixElements) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         for (int i = 0; i < column; i++) {
@@ -174,6 +176,7 @@ public class matrix {
         }
         return al;
     }
+
     public void addTranspose() {
         ArrayList<ArrayList<Integer>> al = printTranspose();
         for (int i = 0; i < row; i++) {
@@ -246,7 +249,7 @@ public class matrix {
         displayMatrixByList(firstMat);
     }
 
-    public void addMatrix(matrix m){
+    public void addMatrix(matrix m) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         for (int i = 0; i < row; i++) {
             al.add(new ArrayList<Integer>());
@@ -263,7 +266,8 @@ public class matrix {
         }
         displayMatrixByList(al);
     }
-    public void subtractMatrix(matrix m){
+
+    public void subtractMatrix(matrix m) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         for (int i = 0; i < row; i++) {
             al.add(new ArrayList<Integer>());
@@ -280,7 +284,8 @@ public class matrix {
         }
         displayMatrixByList(al);
     }
-    public void elementMultiplyMatrix(matrix m){
+
+    public void elementMultiplyMatrix(matrix m) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         for (int i = 0; i < row; i++) {
             al.add(new ArrayList<Integer>());
@@ -315,9 +320,8 @@ public class matrix {
                     int cofactor2 = matrixElements.get((j + 1) % 3).get((i + 2) % 3) * matrixElements.get((i + 1) % 3).get((j + 2) % 3);
                     if ((i + j) % 2 == 0) {
                         adjoint.get(i).set(j, cofactor1 - cofactor2);
-                    }
-                    else{
-                        adjoint.get(i).set(j, -1*(cofactor2 - cofactor1));
+                    } else {
+                        adjoint.get(i).set(j, -1 * (cofactor2 - cofactor1));
                     }
                 }
             }
@@ -381,6 +385,35 @@ public class matrix {
         return inverse;
     }
 
+    public void multiplyMatrix(matrix m) {
+        if (column == m.getRow() && row == m.getColumn()) {
+            ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+            for (int i = 0; i < row; i++) {
+                result.add(new ArrayList<Integer>());
+            }
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < m.getColumn(); j++) {
+                    result.get(i).add(0);
+                }
+            }
+            for (int i = 0; i < row; i++) {
+                ArrayList<Integer> tempRow = matrixElements.get(i);
+                for (int j = 0; j < m.getColumn(); j++) {
+                    ArrayList<Integer> tempRow2 = m.getTranspose(m.getMatrixElements()).get(j);
+                    int temp = 0;
+                    for (int l = 0; l < column; l++) {
+                        temp = temp + tempRow.get(l) * tempRow2.get(l);
+                    }
+                    result.get(i).set(j, temp);
+                }
+            }
+            System.out.println("The result of multiplying the matrix is : ");
+            displayMatrixByList(result);
+        } else {
+            System.out.println("The matrix cannot be multiplied");
+        }
+
+    }
 
     public String getMatrixStoreType() {
         return matrixStoreType;
@@ -388,5 +421,13 @@ public class matrix {
 
     public void setMatrixStoreType(String matrixStoreType) {
         this.matrixStoreType = matrixStoreType;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 }

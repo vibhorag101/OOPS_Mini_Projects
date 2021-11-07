@@ -15,4 +15,13 @@ public class identityMatrix extends diagonalMatrix{
         System.out.println("Inverse is the identity matrix itself");
         displayMatrix();
     }
+    @Override
+    public void multiplyMatrix(matrix m){
+        if(getColumn()==m.getRow()&&getRow()==m.getColumn()){
+            m.displayMatrix();
+        }
+        else{
+            System.out.println("The matrix cannot be multiplied");
+        }
+    }
 }

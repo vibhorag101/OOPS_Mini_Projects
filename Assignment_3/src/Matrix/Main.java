@@ -48,7 +48,7 @@ public class Main {
                     System.out.println("Enter 0 for addition");
                     System.out.println("Enter 1 for subtraction");
                     System.out.println("Enter 2 for multiplication");
-                    System.out.println("Enter 3 for element wise multiplication");
+                    System.out.println("Enter 3 for division");
                     int choiceforOp = scn.nextInt();
                     if (choiceforOp == 0){
                         if (matrix1.getMatrixStoreType().equals("Null Matrix")){
@@ -76,13 +76,19 @@ public class Main {
                     }
                     else if (choiceforOp == 2){
                         if (matrix1.getMatrixStoreType().equals("Null Matrix")){
-                            matrix1.elementMultiplyMatrix(matrix2);
+                            matrix1.multiplyMatrix(matrix2);
                         }
                         else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
-                            matrix2.elementMultiplyMatrix(matrix1);
+                            matrix2.multiplyMatrix(matrix1);
+                        }
+                        else if (matrix1.getMatrixStoreType().equals("Identity Matrix")){
+                            matrix1.multiplyMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Identity Matrix")){
+                            matrix2.multiplyMatrix(matrix1);
                         }
                         else {
-                            matrix1.elementMultiplyMatrix(matrix2);
+                            matrix1.multiplyMatrix(matrix2);
                         }
                     }
                     break;
@@ -90,10 +96,10 @@ public class Main {
                 case 6:
                     matrix1 = al.get(matrixChoose(m));
                     matrix2= al.get(matrixChoose(m));
-                    System.out.println("Enter 0 for addition");
-                    System.out.println("Enter 1 for subtraction");
-                    System.out.println("Enter 2 for multiplication");
-                    System.out.println("Enter 3 for element wise multiplication");
+                    System.out.println("Enter 0 for element-wise addition");
+                    System.out.println("Enter 1 for element-wise subtraction");
+                    System.out.println("Enter 2 for element-wise multiplication");
+                    System.out.println("Enter 3 for element wise division");
                     choiceforOp = scn.nextInt();
                     if (choiceforOp == 0){
                         if (matrix1.getMatrixStoreType().equals("Null Matrix")){

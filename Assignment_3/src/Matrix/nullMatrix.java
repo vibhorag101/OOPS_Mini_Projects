@@ -27,8 +27,8 @@ public class nullMatrix extends identityMatrix {
     @Override
     public void elementMultiplyMatrix(matrix m){
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
-        int row = m.getMatrixElements().size();
-        int column = m.getMatrixElements().get(0).size();
+        int row = m.getRow();
+        int column = m.getColumn();
         for (int i = 0; i < row; i++) {
             al.add(new ArrayList<Integer>());
         }
@@ -38,5 +38,27 @@ public class nullMatrix extends identityMatrix {
             }
         }
         displayMatrixByList(al);
+
+    }
+    @Override
+    public void multiplyMatrix(matrix m){
+        if(getColumn()==m.getRow()&&getRow()==m.getColumn()){
+            ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+            int row = m.getRow();
+            int column = m.getColumn();
+            for (int i = 0; i < row; i++) {
+                al.add(new ArrayList<Integer>());
+            }
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < column; j++) {
+                    al.get(i).add(0);
+                }
+            }
+            displayMatrixByList(al);
+        }
+        else{
+            System.out.println("The matrix cannot be multiplied");
+        }
+
     }
 }
