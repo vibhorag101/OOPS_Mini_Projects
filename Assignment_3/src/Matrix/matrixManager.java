@@ -30,9 +30,11 @@ public class matrixManager {
         }
         String matrixTypeStored = findMatrixType(matrixElements);
 
-//        matrix m = new matrix(matrixElements, counter);
-//        matrixArrayList.add(m);
-//        m.setMatrixLabels(getMatrixLabelList(matrixElements));
+/*
+        matrix m = new matrix(matrixElements, counter);
+        matrixArrayList.add(m);
+        m.setMatrixLabels(getMatrixLabelList(matrixElements));
+*/
         counter++;
 
     }
