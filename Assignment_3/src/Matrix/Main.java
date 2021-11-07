@@ -85,7 +85,7 @@ public class Main {
 
                 case 15:
                     System.out.println("Enter the matrix type label");
-                    m.matrixWithLabels(scn.next());
+                    m.findMatrixWithLabels(scn.next());
                     break;
 
                 case 16:

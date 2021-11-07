@@ -30,10 +30,32 @@ public class matrixManager {
         }
         String matrixTypeStored = findMatrixType(matrixElements);
         ArrayList<String> matrixLabelList = findMatrixLabelList(matrixElements);
-        matrix matrixObject = new matrix(matrixElements,counter);
+        if (matrixTypeStored.equals("Rectangular Matrix")){
+            matrixArrayList.add(new rectangularMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Null Matrix")){
+            matrixArrayList.add(new matrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Symmetric Matrix")){
+            matrixArrayList.add(new symmetricMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Skew Symmetric Matrix")){
+            matrixArrayList.add(new skewSymmetricMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Diagonal Matrix")){
+            matrixArrayList.add(new diagonalMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Identity Matrix")){
+            matrixArrayList.add(new identityMatrix(matrixElements, counter));
+        }
+        else{
+            matrixArrayList.add(new matrix(matrixElements, counter));
+        }
+
+
+        matrix matrixObject = matrixArrayList.get(matrixArrayList.size()-1);
         matrixObject.setMatrixLabels(matrixLabelList);
         matrixObject.setMatrixStoreType(matrixTypeStored);
-        matrixArrayList.add(matrixObject);
         counter++;
     }
 
@@ -239,8 +261,6 @@ public class matrixManager {
         } else {
             if (row == 1) {
                 return ("Singleton Matrix");
-            } else if (allOne) {
-                return ("One Matrix");
             } else if (allZero) {
                 return ("Null Matrix");
             } else if (isIdentity){
@@ -270,7 +290,7 @@ public class matrixManager {
             counter++;
         }
     }
-    public void matrixWithLabels(String label){
+    public void findMatrixWithLabels(String label){
         for (matrix m : matrixArrayList){
             if(m.getMatrixLabels().contains(label)){
                 m.displayMatrix();

@@ -29,6 +29,7 @@ public class skewSymmetricMatrix extends matrix{
                 integers.set(j, 0);
             }
         }
+        System.out.println("For skew symmetric A = -AT");
         displayMatrixByList(al);
     }
 

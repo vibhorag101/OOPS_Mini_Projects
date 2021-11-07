@@ -13,6 +13,7 @@ public class diagonalMatrix extends matrix{
     }
     @Override
     public ArrayList<ArrayList<Integer>> printTranspose() {
+        System.out.println("The Transpose is : ");
         displayMatrixByList(getMatrixElements());
         return(getMatrixElements());
     }
@@ -26,6 +27,7 @@ public class diagonalMatrix extends matrix{
                 integers.set(j, 2 * integers.get(j));
             }
         }
+        System.out.println("The A+AT matrix is : ");
         displayMatrixByList(al);
     }
 
