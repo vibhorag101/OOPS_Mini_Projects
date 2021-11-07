@@ -17,6 +17,11 @@ public class matrix {
         this.id = id;
     }
 
+    public void printMatrixLabelList(){
+        for (String matrixLabel : matrixLabels) {
+            System.out.println(matrixLabel);
+        }
+    }
     public void displayMatrix() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -284,4 +289,11 @@ public class matrix {
     }
 
 
+    public String getMatrixStoreType() {
+        return matrixStoreType;
+    }
+
+    public void setMatrixStoreType(String matrixStoreType) {
+        this.matrixStoreType = matrixStoreType;
+    }
 }

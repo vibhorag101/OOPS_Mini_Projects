@@ -29,14 +29,11 @@ public class matrixManager {
             }
         }
         String matrixTypeStored = findMatrixType(matrixElements);
-
-/*
-        matrix m = new matrix(matrixElements, counter);
-        matrixArrayList.add(m);
-        m.setMatrixLabels(getMatrixLabelList(matrixElements));
-*/
+        ArrayList<String> matrixLabelList = findMatrixLabelList(matrixElements);
+        matrix matrixObject = new matrix(matrixElements,counter);
+        matrixObject.setMatrixLabels(matrixLabelList);
+        matrixObject.setMatrixStoreType(matrixTypeStored);
         counter++;
-
     }
 
     public ArrayList<String> findMatrixLabelList(ArrayList<ArrayList<Integer>> matrixElements) {
@@ -259,6 +256,22 @@ public class matrixManager {
             }
             else{
                 return("Square Matrix");
+            }
+        }
+
+    }
+
+    public void displayMatrixList(){
+        int counter =0;
+        for (matrix m: matrixArrayList){
+            System.out.println("Matrix " + counter + ":");
+            m.displayMatrix();
+        }
+    }
+    public void matrixWithLabels(String label){
+        for (matrix m : matrixArrayList){
+            if(m.getMatrixLabels().contains(label)){
+                m.displayMatrix();
             }
         }
 
