@@ -39,14 +39,99 @@ public class Main {
                 case 3:
                     int chosenMatrix = matrixChoose(m);
                     m.changeMatrixElements(al.get(chosenMatrix));
-
                 case 4:
                     al.get(matrixChoose(m)).printMatrixLabelList();
                     break;
                 case 5:
-                    m.displayMatrixList();
-                    System.out.println("Enter first matrix");
+                    matrix matrix1 = al.get(matrixChoose(m));
+                    matrix matrix2= al.get(matrixChoose(m));
+                    System.out.println("Enter 0 for addition");
+                    System.out.println("Enter 1 for subtraction");
+                    System.out.println("Enter 2 for multiplication");
+                    System.out.println("Enter 3 for element wise multiplication");
+                    int choiceforOp = scn.nextInt();
+                    if (choiceforOp == 0){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.addMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.addMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.addMatrix(matrix2);
+                        }
+
+                    }
+                    else if (choiceforOp == 1){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.subtractMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.subtractMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.subtractMatrix(matrix2);
+                        }
+
+                    }
+                    else if (choiceforOp == 2){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.elementMultiplyMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.elementMultiplyMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.elementMultiplyMatrix(matrix2);
+                        }
+                    }
                     break;
+
+                case 6:
+                    matrix1 = al.get(matrixChoose(m));
+                    matrix2= al.get(matrixChoose(m));
+                    System.out.println("Enter 0 for addition");
+                    System.out.println("Enter 1 for subtraction");
+                    System.out.println("Enter 2 for multiplication");
+                    System.out.println("Enter 3 for element wise multiplication");
+                    choiceforOp = scn.nextInt();
+                    if (choiceforOp == 0){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.addMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.addMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.addMatrix(matrix2);
+                        }
+
+                    }
+                    else if (choiceforOp == 1){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.subtractMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.subtractMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.subtractMatrix(matrix2);
+                        }
+
+                    }
+                    else if (choiceforOp == 2){
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                            matrix1.elementMultiplyMatrix(matrix2);
+                        }
+                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                            matrix2.elementMultiplyMatrix(matrix1);
+                        }
+                        else {
+                            matrix1.elementMultiplyMatrix(matrix2);
+                        }
+                    }
+                    break;
+
 
                 case 7:
                     al.get(matrixChoose(m)).printTranspose();

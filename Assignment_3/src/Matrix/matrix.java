@@ -207,8 +207,17 @@ public class matrix {
 
     //operations with two arguments
     public void matrixOperate(matrix m, int flag) {
+        ArrayList<ArrayList<Integer>> firstMat = new ArrayList<>();
         ArrayList<ArrayList<Integer>> secondMat = m.getMatrixElements();
-        ArrayList<ArrayList<Integer>> firstMat = new ArrayList<>(matrixElements);
+        for (int i = 0; i < row; i++) {
+            firstMat.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                firstMat.get(i).add(matrixElements.get(i).get(j));
+            }
+        }
+
         if (flag == 0) {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
@@ -235,6 +244,58 @@ public class matrix {
             }
         }
         displayMatrixByList(firstMat);
+    }
+
+    public void addMatrix(matrix m){
+        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            al.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).add(0);
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).set(j, matrixElements.get(i).get(j) + m.getMatrixElements().get(i).get(j));
+            }
+        }
+        displayMatrixByList(al);
+    }
+    public void subtractMatrix(matrix m){
+        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            al.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).add(0);
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).set(j, matrixElements.get(i).get(j) - m.getMatrixElements().get(i).get(j));
+            }
+        }
+        displayMatrixByList(al);
+    }
+    public void elementMultiplyMatrix(matrix m){
+        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            al.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).add(0);
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(i).set(j, matrixElements.get(i).get(j) * m.getMatrixElements().get(i).get(j));
+            }
+        }
+        displayMatrixByList(al);
     }
 
     public ArrayList<ArrayList<Integer>> getAdjoint() {

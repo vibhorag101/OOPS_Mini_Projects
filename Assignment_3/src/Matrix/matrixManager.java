@@ -48,6 +48,7 @@ public class matrixManager {
         else if (matrixTypeStored.equals("Identity Matrix")){
             matrixArrayList.add(new identityMatrix(matrixElements, counter));
         }
+
         else{
             matrixArrayList.add(new matrix(matrixElements, counter));
         }
