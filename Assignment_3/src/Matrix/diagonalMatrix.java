@@ -12,7 +12,7 @@ public class diagonalMatrix extends matrix{
         this.size = getMatrixElements().size();
     }
     @Override
-    public ArrayList<ArrayList<Integer>> transpose() {
+    public ArrayList<ArrayList<Integer>> printTranspose() {
         displayMatrixByList(getMatrixElements());
         return(getMatrixElements());
     }

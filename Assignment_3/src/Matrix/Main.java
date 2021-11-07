@@ -45,7 +45,7 @@ public class Main {
                     break;
 
                 case 7:
-                    al.get(matrixChoose(m)).transpose();
+                    al.get(matrixChoose(m)).printTranspose();
                     break;
 
                 case 8:
@@ -58,9 +58,12 @@ public class Main {
                     System.out.println("Enter 2 for mean of all elements");
                     int meanChoice = scn.nextInt();
                     switch (meanChoice) {
-                        case 0 -> al.get(matrixChoose(m)).getRowMean();
-                        case 1 -> al.get(matrixChoose(m)).getColumnMean();
-                        case 2 -> al.get(matrixChoose(m)).getMean();
+                        case 0:
+                            al.get(matrixChoose(m)).getRowMean();
+                        case 1:
+                            al.get(matrixChoose(m)).getColumnMean();
+                        case 2:
+                            al.get(matrixChoose(m)).getMean();
                     }
 
                 case 10:

@@ -18,6 +18,7 @@ public class matrix {
     }
 
     public void printMatrixLabelList(){
+        System.out.println("The types of the matrix are : ");
         for (String matrixLabel : matrixLabels) {
             System.out.println(matrixLabel);
         }
@@ -76,7 +77,6 @@ public class matrix {
             int temp21 = matrixElements.get(2).get(1);
             int temp22 = matrixElements.get(2).get(2);
             int det = temp00 * (temp11 * temp22 - temp12 * temp21) - temp01 * (temp10 * temp22 - temp12 * temp20) + temp02 * (temp10 * temp21 - temp11 * temp20);
-            System.out.println("the determinant of the matrix is " + det);
             return (det);
         }
     }
@@ -138,7 +138,7 @@ public class matrix {
         System.out.println("The mean of all the elements is " + mean);
     }
 
-    public ArrayList<ArrayList<Integer>> transpose() {
+    public ArrayList<ArrayList<Integer>> printTranspose() {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         for (int i = 0; i < column; i++) {
             al.add(new ArrayList<Integer>());
@@ -153,17 +153,35 @@ public class matrix {
                 al.get(j).set(i, matrixElements.get(i).get(j));
             }
         }
+        System.out.println("The Transpose Matrix is : ");
         displayMatrixByList(al);
         return al;
     }
-
+    public ArrayList<ArrayList<Integer>> getTranspose(ArrayList<ArrayList<Integer>> matrixElements) {
+        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+        for (int i = 0; i < column; i++) {
+            al.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < column; i++) {
+            for (int j = 0; j < row; j++) {
+                al.get(i).add(0);
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                al.get(j).set(i, matrixElements.get(i).get(j));
+            }
+        }
+        return al;
+    }
     public void addTranspose() {
-        ArrayList<ArrayList<Integer>> al = transpose();
+        ArrayList<ArrayList<Integer>> al = printTranspose();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 al.get(i).set(j, al.get(i).get(j) + matrixElements.get(i).get(j));
             }
         }
+        System.out.println("The A+AT matrix is :");
         displayMatrixByList(al);
     }
 
@@ -220,13 +238,26 @@ public class matrix {
     }
 
     public ArrayList<ArrayList<Integer>> getAdjoint() {
-        ArrayList<ArrayList<Integer>> adjoint = new ArrayList<>(matrixElements);
+        ArrayList<ArrayList<Integer>> adjoint = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            adjoint.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                adjoint.get(i).add(0);
+            }
+        }
         if (row == 3 && column == 3) {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
                     int cofactor1 = matrixElements.get((i + 1) % 3).get((j + 1) % 3) * matrixElements.get((i + 2) % 3).get((j + 2) % 3);
-                    int cofactor2 = matrixElements.get((j + 1) % 3).get((i + 2) % 3) * matrixElements.get((i + 2) % 3).get((j + 1) % 3);
-                    adjoint.get(i).set(j, cofactor1 - cofactor2);
+                    int cofactor2 = matrixElements.get((j + 1) % 3).get((i + 2) % 3) * matrixElements.get((i + 1) % 3).get((j + 2) % 3);
+                    if ((i + j) % 2 == 0) {
+                        adjoint.get(i).set(j, cofactor1 - cofactor2);
+                    }
+                    else{
+                        adjoint.get(i).set(j, -1*(cofactor2 - cofactor1));
+                    }
                 }
             }
         } else if (row == 2 && column == 2) {
@@ -235,7 +266,7 @@ public class matrix {
             adjoint.get(1).set(0, -1 * matrixElements.get(1).get(0));
             adjoint.get(1).set(1, matrixElements.get(0).get(0));
         }
-        return adjoint;
+        return (getTranspose(adjoint));
     }
 
     public void printMatrixInverse() {
@@ -258,6 +289,7 @@ public class matrix {
                     inverse.get(i).set(j, adjoint.get(i).get(j) / determinant);
                 }
             }
+            System.out.println("The inverse matrix is : ");
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
                     System.out.print(inverse.get(i).get(j) + " ");

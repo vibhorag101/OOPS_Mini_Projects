@@ -7,7 +7,7 @@ public class skewSymmetricMatrix extends matrix{
         super(matrixElements,id);
     }
     @Override
-    public ArrayList<ArrayList<Integer>> transpose() {
+    public ArrayList<ArrayList<Integer>> printTranspose() {
         ArrayList<ArrayList<Integer>> al = getMatrixElements();
         int row = al.size();
         int column = al.get(0).size();

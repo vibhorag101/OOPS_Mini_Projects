@@ -33,6 +33,7 @@ public class matrixManager {
         matrix matrixObject = new matrix(matrixElements,counter);
         matrixObject.setMatrixLabels(matrixLabelList);
         matrixObject.setMatrixStoreType(matrixTypeStored);
+        matrixArrayList.add(matrixObject);
         counter++;
     }
 
@@ -266,6 +267,7 @@ public class matrixManager {
         for (matrix m: matrixArrayList){
             System.out.println("Matrix " + counter + ":");
             m.displayMatrix();
+            counter++;
         }
     }
     public void matrixWithLabels(String label){

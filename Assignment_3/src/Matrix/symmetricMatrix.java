@@ -7,7 +7,7 @@ public class symmetricMatrix extends matrix{
         super(matrixElements,id);
     }
     @Override
-    public ArrayList<ArrayList<Integer>> transpose() {
+    public ArrayList<ArrayList<Integer>> printTranspose() {
         displayMatrixByList(getMatrixElements());
         return(getMatrixElements());
     }
