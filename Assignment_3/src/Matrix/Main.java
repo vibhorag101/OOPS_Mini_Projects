@@ -25,9 +25,9 @@ public class Main {
         System.out.println("Enter 11 for singleton matrix as scalar");
         System.out.println("Enter 12 A+A transpose");
         System.out.println("Enter 13 for eigen vectors and values");
-        System.out.println("Enter 14 for soling linear equations");
+        System.out.println("Enter 14 for solving linear equations");
         System.out.println("Enter 15 to get all matrices of a given label");
-        System.out.println("Enter 16 from the program");
+        System.out.println("Enter 16 to exit from the program");
         ArrayList<matrix> al = matrixManager.matrixArrayList;
         while (true){
             System.out.println("Enter your choice");
@@ -60,10 +60,13 @@ public class Main {
                     switch (meanChoice) {
                         case 0:
                             al.get(matrixChoose(m)).getRowMean();
+                            break;
                         case 1:
                             al.get(matrixChoose(m)).getColumnMean();
+                            break;
                         case 2:
                             al.get(matrixChoose(m)).getMean();
+                            break;
                     }
 
                 case 10:
@@ -84,13 +87,16 @@ public class Main {
                     break;
 
                 case 15:
+                    scn.nextLine();
                     System.out.println("Enter the matrix type label");
-                    m.findMatrixWithLabels(scn.next());
+                    m.findMatrixWithLabels(scn.nextLine());
                     break;
 
                 case 16:
+                    System.exit(0);
                     break;
-
+                default:
+                    System.out.println("Enter a valid choice");
 
 
             }

@@ -293,6 +293,7 @@ public class matrixManager {
     public void findMatrixWithLabels(String label){
         for (matrix m : matrixArrayList){
             if(m.getMatrixLabels().contains(label)){
+                System.out.println("Matrix "+m.getId()+" : ");
                 m.displayMatrix();
             }
         }

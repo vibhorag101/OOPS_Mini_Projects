@@ -128,7 +128,7 @@ public class matrix {
     }
 
     public void getMean() {
-        int mean = 0;
+        float mean = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 mean = mean + matrixElements.get(i).get(j);
@@ -192,13 +192,13 @@ public class matrix {
         if (flag == 0) {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
-                    al.get(i).set(j, al.get(i).get(j) * 2);
+                    al.get(i).set(j, al.get(i).get(j) * scalar);
                 }
             }
         } else {
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < column; j++) {
-                    al.get(i).set(j, al.get(i).get(j) / 2);
+                    al.get(i).set(j, al.get(i).get(j) / scalar);
                 }
             }
         }
