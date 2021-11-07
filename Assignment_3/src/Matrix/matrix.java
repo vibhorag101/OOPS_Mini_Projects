@@ -386,7 +386,7 @@ public class matrix {
     }
 
     public void multiplyMatrix(matrix m) {
-        if (column == m.getRow() && row == m.getColumn()) {
+        if (column == m.getRow()) {
             ArrayList<ArrayList<Integer>> result = new ArrayList<>();
             for (int i = 0; i < row; i++) {
                 result.add(new ArrayList<Integer>());
