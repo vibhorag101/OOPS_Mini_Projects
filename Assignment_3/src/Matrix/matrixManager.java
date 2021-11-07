@@ -299,5 +299,31 @@ public class matrixManager {
         }
 
     }
+    public void changeMatrixElements(matrix m){
+        Scanner scn = new Scanner(System.in);
+        int row = m.getMatrixElements().size();
+        int column = m.getMatrixElements().get(0).size();
+        ArrayList<ArrayList<Integer>> matrixElements = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            matrixElements.add(new ArrayList<>());
+        }
+        System.out.println("Enter the new elements");
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                int temp = scn.nextInt();
+                matrixElements.get(i).add(temp);
+            }
+        }
+        if (m.getMatrixLabels().equals(findMatrixLabelList(matrixElements))){
+            m= new matrix(matrixElements,m.getId());
+        }
+        else{
+            System.out.println("The new matrix elements are not valid");
+        }
+
+
+
+
+    }
 
 }

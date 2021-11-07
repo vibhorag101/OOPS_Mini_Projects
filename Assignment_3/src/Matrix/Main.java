@@ -36,6 +36,10 @@ public class Main {
                 case 1:
                     m.addMatrix();
                     break;
+                case 3:
+                    int chosenMatrix = matrixChoose(m);
+                    m.changeMatrixElements(al.get(chosenMatrix));
+
                 case 4:
                     al.get(matrixChoose(m)).printMatrixLabelList();
                     break;
