@@ -13,19 +13,22 @@ public class nullMatrix extends identityMatrix {
     }
 
     @Override
-    public void printMatrixInverse(){
+    public void printMatrixInverse() {
         System.out.println("The inverse doesn't exist");
     }
+
     @Override
-    public void addMatrix(matrix m){
+    public void addMatrix(matrix m) {
         displayMatrixByList(m.getMatrixElements());
     }
+
     @Override
-    public void subtractMatrix(matrix m){
+    public void subtractMatrix(matrix m) {
         displayMatrixByList(m.getMatrixElements());
     }
+
     @Override
-    public void elementMultiplyMatrix(matrix m){
+    public void elementMultiplyMatrix(matrix m) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
         int row = m.getRow();
         int column = m.getColumn();
@@ -40,9 +43,10 @@ public class nullMatrix extends identityMatrix {
         displayMatrixByList(al);
 
     }
+
     @Override
-    public void multiplyMatrix(matrix m){
-        if(getColumn()==m.getRow()&&getRow()==m.getColumn()){
+    public void multiplyMatrix(matrix m) {
+        if (getColumn() == m.getRow() && getRow() == m.getColumn()) {
             ArrayList<ArrayList<Integer>> al = new ArrayList<>();
             int row = m.getRow();
             int column = m.getColumn();
@@ -55,10 +59,25 @@ public class nullMatrix extends identityMatrix {
                 }
             }
             displayMatrixByList(al);
-        }
-        else{
+        } else {
             System.out.println("The matrix cannot be multiplied");
         }
 
     }
+
+    @Override
+    public void getRowMean() {
+        System.out.println("The mean of all row's elements is " + 0);
+    }
+
+    @Override
+    public void getColumnMean() {
+        System.out.println("The mean of all column's the elements is " + 0);
+    }
+
+    @Override
+    public void getMean() {
+        System.out.println("The mean of all elements is " + 0);
+    }
+
 }

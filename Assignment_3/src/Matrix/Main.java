@@ -163,6 +163,7 @@ public class Main {
                             al.get(matrixChoose(m)).getMean();
                             break;
                     }
+                    break;
 
                 case 10:
                     al.get(matrixChoose(m)).printDeterminants();
