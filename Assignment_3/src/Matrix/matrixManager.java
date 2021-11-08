@@ -59,7 +59,40 @@ public class matrixManager {
         matrixObject.setMatrixStoreType(matrixTypeStored);
         counter++;
     }
+    public void addMatrixFromList(ArrayList<ArrayList<Integer>> matrixElements) {
+        int row = matrixElements.size();
+        int column = matrixElements.get(0).size();
+        String matrixTypeStored = findMatrixType(matrixElements);
+        ArrayList<String> matrixLabelList = findMatrixLabelList(matrixElements);
+        if (matrixTypeStored.equals("Rectangular Matrix")){
+            matrixArrayList.add(new rectangularMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Null Matrix")){
+            matrixArrayList.add(new nullMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Symmetric Matrix")){
+            matrixArrayList.add(new symmetricMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Skew Symmetric Matrix")){
+            matrixArrayList.add(new skewSymmetricMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Diagonal Matrix")){
+            matrixArrayList.add(new diagonalMatrix(matrixElements, counter));
+        }
+        else if (matrixTypeStored.equals("Identity Matrix")){
+            matrixArrayList.add(new identityMatrix(matrixElements, counter));
+        }
 
+        else{
+            matrixArrayList.add(new matrix(matrixElements, counter));
+        }
+
+
+        matrix matrixObject = matrixArrayList.get(matrixArrayList.size()-1);
+        matrixObject.setMatrixLabels(matrixLabelList);
+        matrixObject.setMatrixStoreType(matrixTypeStored);
+        counter++;
+    }
     public ArrayList<String> findMatrixLabelList(ArrayList<ArrayList<Integer>> matrixElements) {
         ArrayList<String> s = new ArrayList<>();
         int row = matrixElements.size();
@@ -176,6 +209,9 @@ public class matrixManager {
             }
             if (isSymmetric) {
                 s.add("Symmetric Matrix");
+            }
+            if (matrix.getDeterminantFromList(matrixElements) == 0){
+                s.add("Singular Matrix");
             }
             s.add("Square Matrix");
         }

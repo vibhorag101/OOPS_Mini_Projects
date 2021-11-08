@@ -100,6 +100,29 @@ public class matrix {
             return (det);
         }
     }
+    public static int getDeterminantFromList(ArrayList<ArrayList<Integer>> matrixElements){
+        int row = matrixElements.size();
+        int column = matrixElements.get(0).size();
+        if (row == 1) {
+            return (matrixElements.get(0).get(0));
+        } else if (row == 2) {
+            int temp1 = matrixElements.get(0).get(0) * matrixElements.get(1).get(1);
+            int temp2 = matrixElements.get(0).get(1) * matrixElements.get(1).get(0);
+            return (temp1 - temp2);
+        } else {
+            int temp00 = matrixElements.get(0).get(0);
+            int temp01 = matrixElements.get(0).get(1);
+            int temp02 = matrixElements.get(0).get(2);
+            int temp10 = matrixElements.get(1).get(0);
+            int temp11 = matrixElements.get(1).get(1);
+            int temp12 = matrixElements.get(1).get(2);
+            int temp20 = matrixElements.get(2).get(0);
+            int temp21 = matrixElements.get(2).get(1);
+            int temp22 = matrixElements.get(2).get(2);
+            int det = temp00 * (temp11 * temp22 - temp12 * temp21) - temp01 * (temp10 * temp22 - temp12 * temp20) + temp02 * (temp10 * temp21 - temp11 * temp20);
+            return (det);
+        }
+    }
 
     public void printDeterminants() {
         if (row == 1) {
