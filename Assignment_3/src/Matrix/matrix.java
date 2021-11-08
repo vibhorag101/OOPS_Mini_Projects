@@ -8,13 +8,20 @@ public class matrix {
     private ArrayList<String> matrixLabels;
     private String matrixStoreType;
     private final int id;
-    private final ArrayList<ArrayList<Integer>> matrixElements;
+    private ArrayList<ArrayList<Integer>> matrixElements;
+    private ArrayList<ArrayList<Float>> floatArraylist;
 
     matrix(ArrayList<ArrayList<Integer>> matrixElements, int id) {
         this.matrixElements = matrixElements;
         this.row = matrixElements.size();
         this.column = matrixElements.get(0).size();
         this.id = id;
+    }
+    matrix(ArrayList<ArrayList<Float>> floatArraylist) {
+        this.floatArraylist = floatArraylist;
+        this.row = floatArraylist.size();
+        this.column = floatArraylist.get(0).size();
+        this.id = 100;
     }
 
     public void printMatrixLabelList() {
@@ -34,6 +41,18 @@ public class matrix {
     }
 
     public void displayMatrixByList(ArrayList<ArrayList<Integer>> matrixElements) {
+        int row = matrixElements.size();
+        int column = matrixElements.get(0).size();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                System.out.print(matrixElements.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+    public void displayMatrixByListFloat(ArrayList<ArrayList<Float>> matrixElements) {
+        int row = matrixElements.size();
+        int column = matrixElements.get(0).size();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
                 System.out.print(matrixElements.get(i).get(j) + " ");
@@ -325,14 +344,18 @@ public class matrix {
                     }
                 }
             }
+            return (getTranspose(adjoint));
         } else if (row == 2 && column == 2) {
             adjoint.get(0).set(0, matrixElements.get(1).get(1));
             adjoint.get(0).set(1, -1 * matrixElements.get(0).get(1));
             adjoint.get(1).set(0, -1 * matrixElements.get(1).get(0));
             adjoint.get(1).set(1, matrixElements.get(0).get(0));
+            return (adjoint);
+
         }
-        return (getTranspose(adjoint));
+        return (adjoint);
     }
+
 
     public void printMatrixInverse() {
         if (getDeterminants() == 0) {
@@ -365,7 +388,27 @@ public class matrix {
         }
     }
 
-    public ArrayList<ArrayList<Float>> getMatrixInverse() {
+    public matrix getMatrixInverse() {
+        ArrayList<ArrayList<Integer>> inverse = new ArrayList<>();
+        for (int i = 0; i < row; i++) {
+            inverse.add(new ArrayList<Integer>());
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                inverse.get(i).add(0);
+            }
+        }
+        ArrayList<ArrayList<Integer>> adjoint = getAdjoint();
+        int determinant = getDeterminants();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                inverse.get(i).set(j, adjoint.get(i).get(j) / determinant);
+            }
+        }
+        return new matrix(inverse,100);
+    }
+
+    public matrix getMatrixInverseFloat() {
         ArrayList<ArrayList<Float>> inverse = new ArrayList<>();
         for (int i = 0; i < row; i++) {
             inverse.add(new ArrayList<Float>());
@@ -382,7 +425,7 @@ public class matrix {
                 inverse.get(i).set(j, adjoint.get(i).get(j) / determinant);
             }
         }
-        return inverse;
+        return new matrix(inverse);
     }
 
     public void multiplyMatrix(matrix m) {
@@ -414,6 +457,39 @@ public class matrix {
         }
 
     }
+    public void multiplyMatrixFloat(matrix m) {
+        if (column == m.getRow()) {
+            ArrayList<ArrayList<Float>> result = new ArrayList<>();
+            for (int i = 0; i < row; i++) {
+                result.add(new ArrayList<Float>());
+            }
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < m.getColumn(); j++) {
+                    result.get(i).add((float)0);
+                }
+            }
+            for (int i = 0; i < row; i++) {
+                ArrayList<Float> tempRow = floatArraylist.get(i);
+                for (int j = 0; j < m.getColumn(); j++) {
+                    ArrayList<Integer> tempRow2 = m.getTranspose(m.getMatrixElements()).get(j);
+                    float temp = 0;
+                    for (int l = 0; l < column; l++) {
+                        temp = temp + tempRow.get(l) * tempRow2.get(l);
+                    }
+                    result.get(i).set(j, temp);
+                }
+            }
+            System.out.println("The Solution of equation is ");
+            displayMatrixByListFloat(result);
+        } else {
+            System.out.println("The matrix cannot be multiplied");
+        }
+
+    }
+    public void solveLinearEquation(matrix m) {
+        getMatrixInverseFloat().multiplyMatrixFloat(m);
+//        getMatrixInverse().multiplyMatrix(m);
+    }
 
     public String getMatrixStoreType() {
         return matrixStoreType;
@@ -429,5 +505,9 @@ public class matrix {
 
     public int getColumn() {
         return column;
+    }
+
+    public ArrayList<ArrayList<Float>> getFloatArraylist() {
+        return floatArraylist;
     }
 }

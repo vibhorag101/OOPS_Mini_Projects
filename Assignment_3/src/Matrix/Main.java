@@ -182,6 +182,14 @@ public class Main {
                     al.get(matrixChoose(m)).addTranspose();
                     break;
 
+                case 14:
+                    System.out.println("Choose the matrix A");
+                    matrix matrixA = al.get(matrixChoose(m));
+                    System.out.println("Choose the matrix B with same rows as B");
+                    matrix matrixB = al.get(matrixChoose(m));
+                    matrixA.solveLinearEquation(matrixB);
+
+
                 case 15:
                     scn.nextLine();
                     System.out.println("Enter the matrix type label");

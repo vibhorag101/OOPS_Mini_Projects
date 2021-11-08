@@ -79,5 +79,9 @@ public class nullMatrix extends identityMatrix {
     public void getMean() {
         System.out.println("The mean of all elements is " + 0);
     }
+    @Override
+    public void singletonScalar(matrix m, int flag) {
+        displayMatrix();
+    }
 
 }

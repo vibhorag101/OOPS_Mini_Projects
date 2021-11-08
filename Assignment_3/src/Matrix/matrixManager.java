@@ -74,48 +74,50 @@ public class matrixManager {
         boolean isSkewSymmetric = true;
         boolean isSymmetric = true;
         int diagElem = matrixElements.get(0).get(0);
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                int matrixElem = matrixElements.get(i).get(j);
-                if (i == j) {
-                    if (matrixElem != 1) {
-                        isIdentity = false;
-                    }
-                    if (matrixElem != diagElem) {
-                        isScalar = false;
-                    }
-                } else {
-                    if (matrixElem != 0) {
-                        isIdentity = false;
-                        isScalar = false;
-                        isDiagonal = false;
-                    }
-                    if (i > j) {
-                        if (matrixElem != 0) {
-                            isUpperTriangle = false;
+        if (row == column) {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < column; j++) {
+                    int matrixElem = matrixElements.get(i).get(j);
+                    if (i == j) {
+                        if (matrixElem != 1) {
+                            isIdentity = false;
+                        }
+                        if (matrixElem != diagElem) {
+                            isScalar = false;
                         }
                     } else {
                         if (matrixElem != 0) {
-                            isLowerTriangle = false;
+                            isIdentity = false;
+                            isScalar = false;
+                            isDiagonal = false;
+                        }
+                        if (i > j) {
+                            if (matrixElem != 0) {
+                                isUpperTriangle = false;
+                            }
+                        } else {
+                            if (matrixElem != 0) {
+                                isLowerTriangle = false;
+                            }
                         }
                     }
                 }
             }
-        }
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j <= i; j++) {
-                int matrixElem = matrixElements.get(i).get(j);
-                if (i == j) {
-                    if (matrixElem != 0) {
-                        isSkewSymmetric = false;
-                    }
-                } else {
-                    int checkElem = matrixElements.get(j).get(i);
-                    if (checkElem != matrixElem) {
-                        isSymmetric = false;
-                    }
-                    if (checkElem != -1 * matrixElem) {
-                        isSkewSymmetric = false;
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j <= i; j++) {
+                    int matrixElem = matrixElements.get(i).get(j);
+                    if (i == j) {
+                        if (matrixElem != 0) {
+                            isSkewSymmetric = false;
+                        }
+                    } else {
+                        int checkElem = matrixElements.get(j).get(i);
+                        if (checkElem != matrixElem) {
+                            isSymmetric = false;
+                        }
+                        if (checkElem != -1 * matrixElem) {
+                            isSkewSymmetric = false;
+                        }
                     }
                 }
             }
@@ -192,51 +194,50 @@ public class matrixManager {
         boolean isSkewSymmetric = true;
         boolean isSymmetric = true;
         int diagElem = matrixElements.get(0).get(0);
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                int matrixElem = matrixElements.get(i).get(j);
-                if (i==j){
-                    if (matrixElem!=1){
-                        isIdentity = false;
-                    }
-                    if (matrixElem != diagElem){
-                        isScalar= false;
-                    }
-                }
-                else{
-                    if (matrixElem!=0){
-                        isIdentity= false;
-                        isScalar=false;
-                        isDiagonal = false;
-                    }
-                    if (i>j){
-                        if (matrixElem !=0){
-                            isUpperTriangle= false;
+        if (row == column) {
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < column; j++) {
+                    int matrixElem = matrixElements.get(i).get(j);
+                    if (i == j) {
+                        if (matrixElem != 1) {
+                            isIdentity = false;
                         }
-                    }
-                    else{
-                        if (matrixElem !=0){
-                            isLowerTriangle = false;
+                        if (matrixElem != diagElem) {
+                            isScalar = false;
+                        }
+                    } else {
+                        if (matrixElem != 0) {
+                            isIdentity = false;
+                            isScalar = false;
+                            isDiagonal = false;
+                        }
+                        if (i > j) {
+                            if (matrixElem != 0) {
+                                isUpperTriangle = false;
+                            }
+                        } else {
+                            if (matrixElem != 0) {
+                                isLowerTriangle = false;
+                            }
                         }
                     }
                 }
             }
-        }
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j <= i; j++) {
-                int matrixElem = matrixElements.get(i).get(j);
-                if (i==j){
-                    if (matrixElem!= 0){
-                        isSkewSymmetric = false;
-                    }
-                }
-                else{
-                    int checkElem = matrixElements.get(j).get(i);
-                    if (checkElem != matrixElem){
-                        isSymmetric = false;
-                    }
-                    if (checkElem != -1*matrixElem){
-                        isSkewSymmetric=false;
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j <= i; j++) {
+                    int matrixElem = matrixElements.get(i).get(j);
+                    if (i == j) {
+                        if (matrixElem != 0) {
+                            isSkewSymmetric = false;
+                        }
+                    } else {
+                        int checkElem = matrixElements.get(j).get(i);
+                        if (checkElem != matrixElem) {
+                            isSymmetric = false;
+                        }
+                        if (checkElem != -1 * matrixElem) {
+                            isSkewSymmetric = false;
+                        }
                     }
                 }
             }
