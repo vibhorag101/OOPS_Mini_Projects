@@ -84,4 +84,9 @@ public class nullMatrix extends identityMatrix {
         displayMatrix();
     }
 
+    @Override
+    public void divideMatrix(matrix m){
+        displayMatrix();
+    }
+
 }

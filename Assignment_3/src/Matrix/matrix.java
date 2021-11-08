@@ -303,6 +303,11 @@ public class matrix {
         }
         displayMatrixByList(al);
     }
+    public void divideMatrix(matrix m){
+
+        System.out.println("The division is : ");
+        multiplyMatrix(m.getMatrixInverse());
+    }
 
     public void elementMultiplyMatrix(matrix m) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
@@ -450,7 +455,6 @@ public class matrix {
                     result.get(i).set(j, temp);
                 }
             }
-            System.out.println("The result of multiplying the matrix is : ");
             displayMatrixByList(result);
         } else {
             System.out.println("The matrix cannot be multiplied");

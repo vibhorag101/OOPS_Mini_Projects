@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static int matrixChoose(matrixManager m){
+    public static int matrixChoose(matrixManager m) {
         Scanner scn = new Scanner(System.in);
         m.displayMatrixList();
         System.out.println("Enter your matrix choice");
@@ -29,10 +29,10 @@ public class Main {
         System.out.println("Enter 15 to get all matrices of a given label");
         System.out.println("Enter 16 to exit from the program");
         ArrayList<matrix> al = matrixManager.matrixArrayList;
-        while (true){
+        while (true) {
             System.out.println("Enter your choice");
             int choice = scn.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     m.addMatrix();
                     break;
@@ -44,95 +44,88 @@ public class Main {
                     break;
                 case 5:
                     matrix matrix1 = al.get(matrixChoose(m));
-                    matrix matrix2= al.get(matrixChoose(m));
+                    matrix matrix2 = al.get(matrixChoose(m));
                     System.out.println("Enter 0 for addition");
                     System.out.println("Enter 1 for subtraction");
                     System.out.println("Enter 2 for multiplication");
                     System.out.println("Enter 3 for division");
                     int choiceforOp = scn.nextInt();
-                    if (choiceforOp == 0){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    if (choiceforOp == 0) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.addMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.addMatrix(matrix1);
-                        }
-                        else {
+                        } else {
                             matrix1.addMatrix(matrix2);
                         }
 
-                    }
-                    else if (choiceforOp == 1){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    } else if (choiceforOp == 1) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.subtractMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.subtractMatrix(matrix1);
-                        }
-                        else {
+                        } else {
                             matrix1.subtractMatrix(matrix2);
                         }
 
-                    }
-                    else if (choiceforOp == 2){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    } else if (choiceforOp == 2) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.multiplyMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.multiplyMatrix(matrix1);
-                        }
-                        else if (matrix1.getMatrixStoreType().equals("Identity Matrix")){
+                        } else if (matrix1.getMatrixStoreType().equals("Identity Matrix")) {
                             matrix1.multiplyMatrix(matrix2);
+                        } else if (matrix2.getMatrixStoreType().equals("Identity Matrix")) {
+                            matrix2.multiplyMatrix(matrix1);
+                        } else {
+                            matrix1.multiplyMatrix(matrix2);
+                        }
+                    } else if (choiceforOp == 3) {
+                        if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
+                            System.out.println("cannot divide by null matrix");
                         }
                         else if (matrix2.getMatrixStoreType().equals("Identity Matrix")){
-                            matrix2.multiplyMatrix(matrix1);
+                            System.out.println("Dividing by Identity Matrix is matrix itself");
+                            matrix1.displayMatrix();
                         }
-                        else {
-                            matrix1.multiplyMatrix(matrix2);
+                            else {
+                            matrix1.multiplyMatrix(matrix2.getMatrixInverse());
                         }
                     }
                     break;
 
                 case 6:
                     matrix1 = al.get(matrixChoose(m));
-                    matrix2= al.get(matrixChoose(m));
+                    matrix2 = al.get(matrixChoose(m));
                     System.out.println("Enter 0 for element-wise addition");
                     System.out.println("Enter 1 for element-wise subtraction");
                     System.out.println("Enter 2 for element-wise multiplication");
                     System.out.println("Enter 3 for element wise division");
                     choiceforOp = scn.nextInt();
-                    if (choiceforOp == 0){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    if (choiceforOp == 0) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.addMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.addMatrix(matrix1);
-                        }
-                        else {
+                        } else {
                             matrix1.addMatrix(matrix2);
                         }
 
-                    }
-                    else if (choiceforOp == 1){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    } else if (choiceforOp == 1) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.subtractMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.subtractMatrix(matrix1);
-                        }
-                        else {
+                        } else {
                             matrix1.subtractMatrix(matrix2);
                         }
 
-                    }
-                    else if (choiceforOp == 2){
-                        if (matrix1.getMatrixStoreType().equals("Null Matrix")){
+                    } else if (choiceforOp == 2) {
+                        if (matrix1.getMatrixStoreType().equals("Null Matrix")) {
                             matrix1.elementMultiplyMatrix(matrix2);
-                        }
-                        else if (matrix2.getMatrixStoreType().equals("Null Matrix")){
+                        } else if (matrix2.getMatrixStoreType().equals("Null Matrix")) {
                             matrix2.elementMultiplyMatrix(matrix1);
-                        }
-                        else {
+                        } else {
                             matrix1.elementMultiplyMatrix(matrix2);
                         }
                     }

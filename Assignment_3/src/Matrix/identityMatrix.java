@@ -24,4 +24,11 @@ public class identityMatrix extends diagonalMatrix{
             System.out.println("The matrix cannot be multiplied");
         }
     }
+    @Override
+    public void solveLinearEquation(matrix m) {
+        System.out.println("The solution of the equation is : ");
+        m.displayMatrix();
+//        getMatrixInverse().multiplyMatrix(m);
+    }
+
 }
