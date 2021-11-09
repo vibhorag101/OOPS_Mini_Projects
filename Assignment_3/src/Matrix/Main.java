@@ -358,6 +358,9 @@ public class Main {
                     al.get(matrixChoose(m)).addTranspose();
                     break;
 
+                case 13:
+                    al.get(matrixChoose(m)).findEigen();
+                    break;
                 case 14:
                     System.out.println("Choose the matrix A");
                     matrix matrixA = al.get(matrixChoose(m));

@@ -89,4 +89,12 @@ public class nullMatrix extends identityMatrix {
         displayMatrix();
     }
 
+    @Override
+    public void findEigen(){
+        System.out.println("The eigen values are 0");
+        System.out.println("The eigen vector of identity matrix is any non zero vector");
+        System.out.println("one such vector is null matrix itself ");
+        displayMatrix();
+    }
+
 }

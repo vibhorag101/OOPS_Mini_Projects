@@ -30,5 +30,13 @@ public class identityMatrix extends diagonalMatrix{
         m.displayMatrix();
 //        getMatrixInverse().multiplyMatrix(m);
     }
+    @Override
+    public void findEigen(){
+        System.out.println("The eigen values are 1");
+        System.out.println("The eigen vector of identity matrix is any non zero vector");
+        System.out.println("one such vector is identity matrix");
+        displayMatrix();
+    }
+
 
 }

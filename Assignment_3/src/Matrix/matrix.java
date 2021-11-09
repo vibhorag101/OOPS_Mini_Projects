@@ -517,6 +517,9 @@ public class matrix {
         getMatrixInverseFloat().multiplyMatrixFloat(m);
 //        getMatrixInverse().multiplyMatrix(m);
     }
+    public void findEigen(){
+        System.out.println("The eigenvalues are : "+1);
+    }
 
     public String getMatrixStoreType() {
         return matrixStoreType;
