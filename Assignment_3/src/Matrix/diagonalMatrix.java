@@ -33,6 +33,10 @@ public class diagonalMatrix extends matrix{
 
     @Override
     public void printDeterminants(){
-        System.out.println("The determinant is "+(Math.pow((double) matrixSingleElements,(double) size)));
+        int d=1;
+        for (int i = 0; i < size; i++) {
+            d= d*getMatrixElements().get(i).get(i);
+        }
+        System.out.println("The determinant of diagonal matrix is "+d);
     }
 }

@@ -16,5 +16,8 @@ public class rectangularMatrix extends matrix {
     public void addTranspose(){
         System.out.println("We cannot add two matrices of different dimensions");
     }
-
+    @Override
+    public void printMatrixInverse() {
+        System.out.println("The inverse does not exists for rectangular matrices");
+    }
 }
