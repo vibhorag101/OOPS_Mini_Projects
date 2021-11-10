@@ -367,7 +367,7 @@ public class Main {
                     System.out.println("Choose the matrix B with same rows as B");
                     matrix matrixB = al.get(matrixChoose(m));
                     matrixA.solveLinearEquation(matrixB);
-
+                    break;
 
                 case 15:
                     System.out.println("Enter 1 for Rectangular Matrix");
