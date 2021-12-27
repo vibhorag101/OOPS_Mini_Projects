@@ -220,10 +220,12 @@ public class Main {
                             break;
 
                     }
+                    break;
 
                 case 3:
                     int chosenMatrix = matrixChoose(m);
                     m.changeMatrixElements(al.get(chosenMatrix));
+                    break;
                 case 4:
                     al.get(matrixChoose(m)).printMatrixLabelList();
                     break;

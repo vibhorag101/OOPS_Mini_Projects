@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e5cf509-1c3e-4072-bbad-37122032d87b" name="Changes" comment="Some minor Changes">
+      <change beforePath="$PROJECT_DIR$/src/Matrix/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
+  <component name="ProjectId" id="1zzRz6Ba7D2TTSQqZf0rLlr1VaG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="D:/" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Matrix.Main" />
+      <module name="Assignment_3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e5cf509-1c3e-4072-bbad-37122032d87b" name="Changes" comment="" />
+      <created>1635149191815</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635149191815</updated>
+      <workItem from="1635149195963" duration="115000" />
+      <workItem from="1635225484743" duration="572000" />
+      <workItem from="1635403361926" duration="29000" />
+      <workItem from="1636249167715" duration="57412000" />
+      <workItem from="1636436222661" duration="673000" />
+      <workItem from="1636454556842" duration="2384000" />
+      <workItem from="1636522858382" duration="58000" />
+      <workItem from="1636522992424" duration="171000" />
+      <workItem from="1638288279549" duration="115000" />
+      <workItem from="1638288420655" duration="102000" />
+      <workItem from="1638630688361" duration="31000" />
+      <workItem from="1638630884087" duration="123000" />
+      <workItem from="1639572872820" duration="5190000" />
+      <workItem from="1639580041758" duration="172000" />
+      <workItem from="1639580242101" duration="503000" />
+      <workItem from="1639661648565" duration="1682000" />
+      <workItem from="1639675523535" duration="400000" />
+      <workItem from="1639832109621" duration="2293000" />
+      <workItem from="1639884203346" duration="755000" />
+      <workItem from="1639885121206" duration="652000" />
+    </task>
+    <task id="LOCAL-00001" summary="Intellij Folder config">
+      <created>1635149247295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635149247295</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Intellij Folder config">
+      <created>1635149285893</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635149285893</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented Inverse and Adjoint">
+      <created>1636256267804</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636256267804</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented the menu">
+      <created>1636262696161</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636262696161</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Corrected Some BUGS">
+      <created>1636269066689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636269066689</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Minor Changes">
+      <created>1636271146617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636271146617</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Intellij Files">
+      <created>1636271166634</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636271166634</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Bug Fixes">
+      <created>1636274556159</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636274556159</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Did Case 3 , changing elements">
+      <created>1636277060233</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636277060233</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added Null Matrix">
+      <created>1636279399943</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1636279399943</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changes for element wise operations">
+      <created>1636302409855</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636302409855</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added Multiplication of matrices">
+      <created>1636306958106</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636306958106</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Some bug fixes">
+      <created>1636307497585</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636307497585</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added Column Mean Optimisation">
+      <created>1636337932993</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1636337932993</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented Equation Solver">
+      <created>1636346206684</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1636346206684</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Implemented Division with optimisation">
+      <created>1636349059143</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1636349059143</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added default matrix creation">
+      <created>1636354589078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1636354589078</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Done Eigen Vector">
+      <created>1636436884455</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1636436884455</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Some minor Changes">
+      <created>1636522906827</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1636522906827</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Some minor Changes">
+      <created>1636523157377</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1636523157377</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="inverse" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Intellij Folder config" />
+    <MESSAGE value="Implemented Inverse and Adjoint" />
+    <MESSAGE value="Implemented the menu" />
+    <MESSAGE value="Corrected Some BUGS" />
+    <MESSAGE value="Minor Changes" />
+    <MESSAGE value="Intellij Files" />
+    <MESSAGE value="Bug Fixes" />
+    <MESSAGE value="Did Case 3 , changing elements" />
+    <MESSAGE value="Added Null Matrix" />
+    <MESSAGE value="Changes for element wise operations" />
+    <MESSAGE value="Added Multiplication of matrices" />
+    <MESSAGE value="Some bug fixes" />
+    <MESSAGE value="Added Column Mean Optimisation" />
+    <MESSAGE value="Implemented Equation Solver" />
+    <MESSAGE value="Implemented Division with optimisation" />
+    <MESSAGE value="Added default matrix creation" />
+    <MESSAGE value="Done Eigen Vector" />
+    <MESSAGE value="Some minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some minor Changes" />
+  </component>
+</project>
