@@ -1,4 +1,4 @@
-# AP Assignments
+# OOPS Mini Projects
 This is my repository of all the Mini Projects done as a part of Adavanced Programming (OOPS) course at IIIT Delhi.
 The assignment are based on the following topics
 1. Vaccine Management System
